@@ -1,22 +1,43 @@
 services:
-  client:
+  front-end:
     build:
       context: ./client
       dockerfile: Dockerfile
-    container_name: front-end
+    environment:
+      - NODE_ENV=production
     volumes:
-      - ./nginx/conf:/etc/nginx/conf.d:ro
+      - ./nginx/conf:/etc/nginx/conf.d/:ro
+      - ./certbot/www:/var/www/certbot/:ro
+      - ./certbot/conf:/etc/letsencrypt/:ro
     ports:
       - 80:80
       - 443:443
-  server:
+  back-end:
     build:
       context: ./server
       dockerfile: Dockerfile
-    container_name: back-end
     environment:
-      ENV NODE_ENV: "production"
+      - NODE_ENV=production
     ports:
       - 3000:3000
     restart: always
-
+  ssl-service:
+    image: certbot/certbot:v2.8.0
+    volumes:
+      - ./certbot/www:/var/www/certbot/:rw
+      - ./certbot/conf:/etc/letsencrypt/:rw
+    depends_on:
+      - front-end
+    command:
+        - certonly
+        - --webroot
+        - -w
+        - /var/www/certbot/
+        - --email=frank.st.kong@gmail.com
+        - --agree-tos
+        - --no-eff-email
+        - --config-dir=~/.certbot/config
+        - --logs-dir=~/.certbot/logs
+        - --work-dir=~/.certbot/work
+        - -d
+        - yourguitarlessons.tech

@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import axios from 'axios';
 import './App.css';
+import { url } from './util/constants';
 
 function App() {
-    const url = "http://" + process.env.REACT_APP_BACKEND_API_DOMAIN;
     console.log(url)
     const [message , setMessage] = React.useState<string>('');
     useEffect(() => {
