@@ -29,7 +29,7 @@ services:
     depends_on:
       - front-end
     command:
-        - certbot
+        - certonly
         - --test-cert
         - --webroot
         - -w
