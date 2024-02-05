@@ -10,7 +10,7 @@ const app: Express = express()
 const router: Router = express.Router()
 const port = 3000
 
-app.use(cors())
+app.use(cors(corsConfig))
 
 router.get('/hello', (req, res) => {
     res.send('Hello from the backend!')
