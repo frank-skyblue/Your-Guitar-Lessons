@@ -21,21 +21,3 @@ services:
     ports:
       - 3000:3000
     restart: always
-#  ssl-service:
-#    image: certbot/certbot:v2.8.0
-#    volumes:
-#      - ./certbot/www:/var/www/certbot/:rw
-#      - ./certbot/conf:/etc/letsencrypt/:rw
-#    depends_on:
-#      - front-end
-#    command:
-#        - certonly
-#        - --test-cert
-#        - --webroot
-#        - -w
-#        - /var/www/certbot/
-#        - --email=frank.st.kong@gmail.com
-#        - --agree-tos
-#        - --no-eff-email
-#        - -d
-#        - yourguitarlessons.tech
