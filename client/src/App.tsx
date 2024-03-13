@@ -1,9 +1,36 @@
 import React, {useEffect} from 'react';
-import axios from 'axios';
-import './App.css';
-import { url } from './util/constants';
+
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import Root from "./routes/root";
+import ErrorPage from "./errorPage";
+import Home from './routes/home';
+import Calendar from './routes/calendar';
+import About from './routes/about';
+
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <Root />,
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                path: 'home',
+                element: <Home />,
+            },
+            {
+                path: 'calendar',
+                element: <Calendar />,
+            },
+            {
+                path: 'about',
+                element: <About />,
+            },
+        ]
+    },
+]);
 
 function App() {
+    /* Test backend connection
     console.log(url)
     const [message , setMessage] = React.useState<string>('');
     useEffect(() => {
@@ -16,11 +43,10 @@ function App() {
                 console.log(err);
             });
     }, []);
-  return (
-      <h1 className="text-3xl font-bold underline text-red-600">
-          {message}
-      </h1>
-  );
+    */
+    return (
+        <RouterProvider router={router} />
+    );
 }
 
 export default App;
