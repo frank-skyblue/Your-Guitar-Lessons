@@ -9,9 +9,11 @@ module.exports = {
       'side-nav': '#797E89',
       'background': '#F9FBFF',
       'highlight': '#FFFFFF',
+      'nav-highlight': '#a89bff',
+      'nav-hover': '#665CA4',
     },
     extend: {},
   },
-  plugins: [],
+  plugins: []
 }
 

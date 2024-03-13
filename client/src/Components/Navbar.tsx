@@ -7,8 +7,7 @@ const navigation = [
     { name: 'Home', href: 'home', current: true },
     { name: 'Calendar', href: 'calendar', current: false },
     { name: 'About', href: 'about', current: false },
-    { name: 'Profile', href: 'profile', current: false },
-    { name: 'Logout', href: '#', current: false },
+    { name: 'Profile', href: 'profile', current: false }
 ]
 
 /* For side-nav
@@ -41,6 +40,7 @@ function classNames(...classes: any[]) {
     return classes.filter(Boolean).join(' ')
 }
 
+// bg-gray-900 text-white
 export default function Example() {
     return (
         <Disclosure as="nav" className="bg-nav text-highlight">
@@ -77,7 +77,6 @@ export default function Example() {
                         </div>
                     </div>
 
-                    {/* TODO: Change links to client-side routing */}
                     <Disclosure.Panel className="sm:hidden">
                         <div className="space-y-1 px-2 pb-3 pt-2">
                             {navigation.map((item) => (
@@ -85,13 +84,25 @@ export default function Example() {
                                     key={item.name}
                                     as={NavLink}
                                     to={item.href}
-                                    className={({ isActive }: { isActive: boolean }) =>
-                                        classNames(isActive ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                            'block rounded-md px-3 py-2 text-base font-medium')}
+                                    className={
+                                        classNames(
+                                            item.current ? 'bg-nav-highlight' : 'hover:bg-nav-hover',
+                                            'block rounded-md px-3 py-2 text-base font-medium'
+                                        )}
+                                    onClick={() => {
+                                        navigation.map((item) => item.current = false)
+                                        item.current = true
+                                    }}
+                                    aria-current={item.current ? 'page' : undefined}
                                 >
                                     {item.name}
                                 </Disclosure.Button>
                             ))}
+                            <Disclosure.Button
+                                as="button"
+                                className='w-full hover:bg-nav-hover block rounded-md px-3 py-2 text-base text-left font-medium'
+                                onClick={() => console.log("you have been logged out")}
+                            >Logout</Disclosure.Button>
                         </div>
                     </Disclosure.Panel>
                 </>
