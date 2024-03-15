@@ -6,11 +6,16 @@ module.exports = {
   theme: {
     colors: {
       'nav': '#514A80',
+      
       'side-nav': '#797E89',
-      'background': '#F9FBFF',
-      'highlight': '#FFFFFF',
-      'nav-highlight': '#a89bff',
-      'nav-hover': '#665CA4',
+      'side-nav-text-active': '#FFFFFF',
+      'side-nav-text-inactive': '#000000',
+
+      'content': '#F9FBFF',
+      'content-highlight': '#FFFFFF',
+
+      'mobile-nav-highlight': '#a89bff',
+      'mobile-nav-hover': '#665CA4',
     },
     extend: {},
   },
