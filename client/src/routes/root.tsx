@@ -5,7 +5,7 @@ export default function Root() {
     return (
         <>
             <Navbar />
-            <div className="h-[calc(100%-56px)]">
+            <div className="h-[calc(100%-56px)] relative">
                 <Outlet />
             </div>
         </>

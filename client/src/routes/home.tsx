@@ -5,8 +5,16 @@ const Home: React.FC = () => {
     return (
         <>
             <SideNav />
-            <h1>Welcome to Your Guitar Lessons!</h1>
-            {/* Add your content here */}
+            <div
+                className="h-full bg-content md:pl-[12rem]">
+                <div className='h-full md:px-6 md:py-8'>
+                    <div className="bg-content-highlight h-full md:rounded px-2">
+
+                        <h1 className="text-2xl font-bold">Home</h1>
+                    </div>
+                </div>
+
+            </div>
         </>
     );
 };
