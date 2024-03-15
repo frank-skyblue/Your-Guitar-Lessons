@@ -1,18 +1,19 @@
 import { Fragment } from 'react'
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { classNames } from '../util/helpers';
 
-// TODO: Fix the hard-coded current value
-const navigation = [
-    { name: 'Home', href: 'home', current: true },
-    { name: 'Calendar', href: 'calendar', current: false },
-    { name: 'About', href: 'about', current: false },
-    { name: 'Profile', href: '#', current: false }
-]
+export default function NavBar() {
+    const navigation = [
+        { name: 'Home', href: '/home' },
+        { name: 'Calendar', href: '/calendar' },
+        { name: 'About', href: '/about' },
+        { name: 'Profile', href: '#' }
+    ]
 
-export default function Example() {
+    const { pathname } = useLocation();
+
     return (
         <Disclosure as="nav" className="bg-nav text-content-highlight">
             {({ open }) => (
@@ -57,14 +58,9 @@ export default function Example() {
                                     to={item.href}
                                     className={
                                         classNames(
-                                            item.current ? 'bg-mobile-nav-highlight' : 'hover:bg-mobile-nav-hover',
+                                            (pathname === item.href) ? 'bg-mobile-nav-highlight' : 'hover:bg-mobile-nav-hover',
                                             'block rounded-md px-3 py-2 text-base font-medium'
                                         )}
-                                    onClick={() => {
-                                        navigation.map((item) => item.current = false)
-                                        item.current = true
-                                    }}
-                                    aria-current={item.current ? 'page' : undefined}
                                 >
                                     {item.name}
                                 </Disclosure.Button>
