@@ -16,6 +16,8 @@ module.exports = {
 
       'mobile-nav-highlight': '#a89bff',
       'mobile-nav-hover': '#665CA4',
+
+      'text-primary': '#000000',
     },
     extend: {},
   },
