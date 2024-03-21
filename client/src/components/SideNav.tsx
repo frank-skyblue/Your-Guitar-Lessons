@@ -1,16 +1,17 @@
 import React from 'react';
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { classNames } from '../util/helpers';
 import { HomeIcon, CalendarIcon, InformationCircleIcon } from '@heroicons/react/20/solid';
 
+// TODO: Dynamic resizing of sidebar
 function Sidebar() {
     const navigation = [
-        { name: 'Home', href: '/home', icon: <HomeIcon className='h-7 w-7 mr-2' />},
-        { name: 'Calendar', href: '/calendar', icon: <CalendarIcon className='h-7 w-7 mr-2' />},
-        { name: 'About', href: '/about', icon: <InformationCircleIcon className='h-7 w-7 mr-2' />}
+        { name: 'Home', href: '/', icon: <HomeIcon className='h-7 w-7 mr-2' /> },
+        { name: 'Calendar', href: '/calendar', icon: <CalendarIcon className='h-7 w-7 mr-2' /> },
+        { name: 'About', href: '/about', icon: <InformationCircleIcon className='h-7 w-7 mr-2' /> }
     ]
 
-    const {pathname} = useLocation();
+    const { pathname } = useLocation();
 
     return (
         <aside id="sidebar"
@@ -28,6 +29,16 @@ function Sidebar() {
                             {item.icon}
                             {item.name}
                         </Link>
+                        {/* <NavLink
+                            to={item.href}
+                            className={({ isActive }) => classNames(
+                                isActive ? 'text-side-nav-text-active' : 'text-side-nav-text-inactive',
+                                'flex items-center rounded-md px-3 py-2 text-sm font-semibold'
+                            )}
+                        >
+                            {item.icon}
+                            {item.name}
+                        </NavLink> */}
                     </li>
                 ))}
             </ul>

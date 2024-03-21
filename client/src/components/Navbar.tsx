@@ -6,10 +6,10 @@ import { classNames } from '../util/helpers';
 
 export default function NavBar() {
     const navigation = [
-        { name: 'Home', href: '/home' },
+        { name: 'Home', href: '/' },
         { name: 'Calendar', href: '/calendar' },
         { name: 'About', href: '/about' },
-        { name: 'Profile', href: '#' }
+        { name: 'Profile', href: '/profile' }
     ]
 
     const { pathname } = useLocation();
@@ -34,14 +34,14 @@ export default function NavBar() {
                                 </Disclosure.Button>
                             </div>
                             <div className="flex flex-1 items-center justify-center md:justify-start">
-                                <Link to="home"><h1>YourGuitarLessons</h1></Link>
+                                <Link to="/"><h1>YourGuitarLessons</h1></Link>
                             </div>
                             <div className="hidden absolute inset-y-0 right-0 md:flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                                     <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clipRule="evenodd" />
                                 </svg>
-                                <div className="ml-6 flex space-x-4">
-                                    <Link to={`#`}>Profile</Link>
+                                <div className="ml-6 flex space-x-4 text-sm font-medium">
+                                    <Link to={`/profile`}>Profile</Link>
                                     {/*TODO: Add logging out*/}
                                     <p className="hover:cursor-pointer" onClick={() => console.log("you have been logged out")}>Logout</p>
                                 </div>
@@ -59,7 +59,7 @@ export default function NavBar() {
                                     className={
                                         classNames(
                                             (pathname === item.href) ? 'bg-mobile-nav-highlight' : 'hover:bg-mobile-nav-hover',
-                                            'block rounded-md px-3 py-2 text-base font-medium'
+                                            'block rounded-md px-3 py-2 text-sm font-medium'
                                         )}
                                 >
                                     {item.name}
@@ -67,7 +67,7 @@ export default function NavBar() {
                             ))}
                             <Disclosure.Button
                                 as="button"
-                                className='w-full hover:bg-mobile-nav-hover block rounded-md px-3 py-2 text-base text-left font-medium'
+                                className='w-full hover:bg-mobile-nav-hover block rounded-md px-3 py-2 text-sm text-left font-medium'
                                 onClick={() => console.log("you have been logged out")}
                             >Logout</Disclosure.Button>
                         </div>

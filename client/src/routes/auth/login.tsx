@@ -18,7 +18,7 @@ const Login: React.FC = () => {
     };
 
     return (
-        <div>
+        <div className="h-full bg-[url('assets/primary-bg.png')] bg-cover bg-center">
             <h2>Login</h2>
             <form onSubmit={handleSubmit}>
                 <div>
