@@ -4,24 +4,24 @@ import { PreviousLessonsObjType, UpcomingLessonsObjType } from '../util/types';
 
 const Home: React.FC = () => {
     return (
-        <div className='h-full flex flex-col md:flex-row md:gap-x-6 md:px-6 md:py-8'>
-            <div className='md:basis-3/5 flex flex-col md:gap-y-6'>
-                <div className='md:basis-2/6 flex flex-col gap-y-2 overflow-hidden'>
+        <div className='h-full flex flex-col gap-y-3 md:gap-y-0 md:flex-row md:gap-x-6 p-3 md:px-6 md:py-8'>
+            <div className='basis-3/4 md:basis-3/5 flex flex-col gap-y-3 md:gap-y-6 overflow-hidden'>
+                <div className='basis-1/3 md:basis-2/6 flex flex-col gap-y-2 overflow-hidden text-center md:text-left'>
                     <h1 className='text-2xl'>Upcoming Lessons</h1>
-                    <div className='bg-content-highlight flex-grow flex flex-col gap-y-2 rounded-md px-2 overflow-hidden'>
+                    <div className='md:bg-content-highlight flex-grow flex flex-col gap-y-2 rounded-md px-2 overflow-hidden'>
                         <UpcomingLessons />
                     </div>
                 </div>
-                <div className='md:basis-4/6 flex flex-col gap-y-2 overflow-hidden'>
+                <div className='basis-2/3 md:basis-4/6 flex flex-col gap-y-2 overflow-hidden text-center md:text-left'>
                     <h1 className='text-2xl'>Previous Lessons</h1>
-                    <div className='bg-content-highlight flex-grow flex flex-col gap-y-2 rounded-md px-2 overflow-hidden'>
+                    <div className='md:bg-content-highlight flex-grow flex flex-col gap-y-2 rounded-md px-2 overflow-hidden'>
                         <PreviousLessons />
                     </div>
                 </div>
             </div>
-            <div className='md:basis-2/5 flex flex-col gap-y-2'>
+            <div className='basis-1/4 md:basis-2/5 flex flex-col gap-y-2 order-first md:order-none text-center md:text-left'>
                 <h1 className='text-2xl'>Dashboard</h1>
-                <div className='bg-content-highlight flex-grow rounded-md'>
+                <div className='md:bg-content-highlight flex-grow rounded-md'>
                     <Dashboard />
                 </div>
             </div>
@@ -96,14 +96,14 @@ const PreviousLessons: React.FC = () => {
         <>
             <div className='flex flex-row'>
                 {PreviousLessonsHeaders.map((title, index) => (
-                    <p key={index} className='text-md font-bold basis-1/5'>{title}</p>
+                    <p key={index} className='text-md font-bold first:basis-1/5 basis-2/6'>{title}</p>
                 ))}
             </div>
             <div className='flex flex-col gap-y-2 overflow-auto'>
             {previousLessons.map((lesson: PreviousLessonsObjType, index) => (
                 <div key={index} className='flex flex-row'>
                     {Object.values(lesson).map((value, index) => (
-                        <p key={index} className='text-md text-text-primary/60 basis-1/5'>{value}</p>
+                        <p key={index} className='text-md text-text-primary/60 first:basis-1/5 basis-2/6'>{value}</p>
                     ))}
                 </div>
             ))}

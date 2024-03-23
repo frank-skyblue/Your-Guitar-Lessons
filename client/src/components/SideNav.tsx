@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { classNames } from '../util/helpers';
 import { HomeIcon, CalendarIcon, InformationCircleIcon } from '@heroicons/react/20/solid';
 

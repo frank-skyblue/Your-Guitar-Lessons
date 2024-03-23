@@ -1,7 +1,8 @@
-import React, {useEffect} from 'react';
-import {createBrowserRouter, Navigate, RouterProvider} from "react-router-dom";
+import React, { useEffect } from 'react';
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import ErrorPage from "./errorPage";
 import DynamicRoute from './routes/layout/DynamicRoute';
+import RoleRoute from './routes/layout/RoleRoute';
 import RootLayout from "./routes/layout/RootLayout";
 import HomeLayout from './routes/layout/HomeLayout';
 import AuthLayout from './routes/layout/AuthLayout';
@@ -11,6 +12,9 @@ import About from './routes/about';
 import Profile from './routes/profile';
 import Login from './routes/auth/login';
 import Signup from './routes/auth/signup';
+import AdminHome from './routes/adminHome';
+import AdminCalendar from './routes/adminCalendar';
+import AdminProfile from './routes/adminProfile';
 
 // TODO: appending additional child routes will cause the nav highlight to not work
 const router = createBrowserRouter([
@@ -24,11 +28,17 @@ const router = createBrowserRouter([
                 children: [
                     {
                         index: true,
-                        element: <DynamicRoute authenticationPage={false} landingPage={false} element={<Home />} />,
+                        element: <DynamicRoute
+                            authenticationPage={false}
+                            landingPage={false}
+                            element={<RoleRoute element={<Home />} admin={<AdminHome />} />} />,
                     },
                     {
                         path: 'calendar',
-                        element: <DynamicRoute authenticationPage={false} landingPage={false} element={<Calendar />} />,
+                        element: <DynamicRoute
+                            authenticationPage={false}
+                            landingPage={false}
+                            element={<RoleRoute element={<Calendar />} admin={<AdminCalendar />} />} />,
                     }
                 ]
             },
@@ -51,7 +61,10 @@ const router = createBrowserRouter([
             },
             {
                 path: 'profile',
-                element: <DynamicRoute authenticationPage={false} landingPage={false} element={<Profile />} />,
+                element: <DynamicRoute
+                    authenticationPage={false}
+                    landingPage={false}
+                    element={<RoleRoute element={<Profile />} admin={<AdminProfile />} />} />,
             },
         ]
     },
