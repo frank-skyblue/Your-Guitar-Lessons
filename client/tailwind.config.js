@@ -19,6 +19,11 @@ module.exports = {
 
       'text-primary': '#000000',
       'text-inactive': '#A0A0A0',
+
+      'past-highlight': '#DFDDDD',
+      'booked-highlight': '#BEBDFF',
+      'available-highlight': "#B2FDAC",
+
     },
     extend: {},
   },

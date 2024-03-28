@@ -140,4 +140,282 @@ const getMockPreviousLessons = (): PreviousLessonsObjType[] => {
     ];
 }
 
-export { getMockUpcomingLessons, getMockPreviousLessons };
+const getMockCalendarEvents = () => {
+    return [
+        {
+            date: -1,
+            events: []
+        },
+        {
+            date: -1,
+            events: []
+        },
+        {
+            date: -1,
+            events: []
+        },
+        {
+            date: -1,
+            events: []
+        },
+        {
+            date: -1,
+            events: []
+        },
+        {
+            date: 1,
+            events: []
+        },
+        {
+            date: 2,
+            events: []
+        },
+        {
+            date: 3,
+            events: []
+        },
+        {
+            date: 4,
+            events: [
+                {
+                    type: 'past',
+                    time: '8pm',
+                    address: '17 Morris Dr.',
+                }
+            ]
+        },
+        {
+            date: 5,
+            events: []
+        },
+        {
+            date: 6,
+            events: [
+                {
+                    type: 'booked',
+                    time: '4pm',
+                    address: '17 Morris Dr.',
+                }
+            ]
+        },
+        {
+            date: 7,
+            events: []
+        },
+        {
+            date: 8,
+            events: []
+        },
+        {
+            date: 9,
+            events: [
+                {
+                    type: 'booked',
+                    time: '4pm',
+                    address: '17 Morris Dr.',
+                },
+                {
+                    type: 'booked',
+                    time: '6pm',
+                    address: '17 Morris Dr.',
+                },
+                {
+                    type: 'booked',
+                    time: '7pm',
+                    address: '17 Morris Dr.',
+                }
+            ]
+        },
+        {
+            date: 10,
+            events: []
+        },
+        {
+            date: 11,
+            events: []
+        },
+        {
+            date: 12,
+            events: []
+        },
+        {
+            date: 13,
+            events: []
+        },
+        {
+            date: 14,
+            events: [
+                {
+                    type: 'available',
+                    time: '4pm',
+                    address: null
+                },
+                {
+                    type: 'available',
+                    time: '6pm',
+                    address: null
+                }
+            ]
+        },
+        {
+            date: 15,
+            events: []
+        },
+        {
+            date: 16,
+            events: []
+        },
+        {
+            date: 17,
+            events: [
+                {
+                    type: 'available',
+                    time: '4pm',
+                    address: null
+                },
+                {
+                    type: 'available',
+                    time: '6pm',
+                    address: null
+                }
+            ]
+        },
+        {
+            date: 18,
+            events: []
+        },
+        {
+            date: 19,
+            events: []
+        },
+        {
+            date: 20,
+            events: [
+                {
+                    type: 'available',
+                    time: '4pm',
+                    address: null
+                },
+                {
+                    type: 'available',
+                    time: '6pm',
+                    address: null
+                }
+            ]
+        },
+        {
+            date: 21,
+            events: []
+        },
+        {
+            date: 22,
+            events: []
+        },
+        {
+            date: 23,
+            events: []
+        },
+        {
+            date: 24,
+            events: [
+                {
+                    type: 'available',
+                    time: '4pm',
+                    address: null
+                },
+                {
+                    type: 'available',
+                    time: '6pm',
+                    address: null
+                }
+            ]
+        },
+        {
+            date: 25,
+            events: []
+        },
+        {
+            date: 26,
+            events: [
+                {
+                    type: 'available',
+                    time: '4pm',
+                    address: null
+                },
+                {
+                    type: 'available',
+                    time: '6pm',
+                    address: null
+                }
+            ]
+        },
+        {
+            date: 27,
+            events: []
+        },
+        {
+            date: 28,
+            events: [
+                {
+                    type: 'available',
+                    time: '4pm',
+                    address: null
+                },
+                {
+                    type: 'available',
+                    time: '6pm',
+                    address: null
+                }
+            ]
+        },
+        {
+            date: 29,
+            events: []
+        },
+        {
+            date: 30,
+            events: [
+                {
+                    type: 'available',
+                    time: '4pm',
+                    address: null
+                },
+                {
+                    type: 'available',
+                    time: '6pm',
+                    address: null
+                }
+            ]
+        },
+        {
+            date: 31,
+            events: []
+        },{
+            date: -1,
+            events: []
+        },
+        {
+            date: -1,
+            events: []
+        },
+        {
+            date: -1,
+            events: []
+        },
+        {
+            date: -1,
+            events: []
+        },
+        {
+            date: -1,
+            events: []
+        },
+        {
+            date: -1,
+            events: []
+        },
+    ];
+
+}
+
+export { getMockUpcomingLessons, getMockPreviousLessons, getMockCalendarEvents };
