@@ -1,8 +1,6 @@
 import React from "react";
-import { HomeIcon } from "@heroicons/react/24/outline";
-import { useNavigate } from "react-router-dom";
 
-const About: React.FC = () => {
+const Landing: React.FC = () => {
   return (
     <div className="h-full bg-[url('assets/primary-bg.png')] bg-cover bg-right md:bg-center">
       <main className="h-full flex">
@@ -22,7 +20,16 @@ const About: React.FC = () => {
 };
 
 const Title: React.FC = () => {
-  return <h1 className="text-2xl font-normal text-text-primary">About</h1>;
+  return (
+    <div className="flex flex-col">
+      <h1 className="text-2xl font-normal text-text-primary">
+        Welcome to <span className="font-bold">your guitar lessons</span>
+      </h1>
+      <h1 className="text-base md:text-lg font-light text-text-primary/50">
+        You'll find some information about the lessons here
+      </h1>
+    </div>
+  );
 };
 
 const Content: React.FC = () => {
@@ -70,18 +77,14 @@ const Content: React.FC = () => {
 };
 
 const Navigation: React.FC = () => {
-  const navigate = useNavigate();
   return (
-    <div className="flex justify-center md:justify-end text-md">
-      <button
-        className="flex justify-center items-center px-12 md:px-4 py-2 bg-dashboard rounded-lg"
-        onClick={() => navigate("/")}
-      >
-        <HomeIcon className="h-6 w-6" />
-        <span className="ml-2 hidden md:inline-block">Home</span>
-      </button>
+    <div className="flex flex-col items-end text-lg">
+      <div>
+        Please <span className="text-text-clickable">login</span> or{" "}
+        <span className="text-text-clickable">register</span> to continue
+      </div>
     </div>
   );
 };
 
-export default About;
+export default Landing;

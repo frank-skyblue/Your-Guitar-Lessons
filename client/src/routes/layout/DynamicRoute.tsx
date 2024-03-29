@@ -1,4 +1,3 @@
-import React from "react";
 import { Navigate } from "react-router-dom";
 
 // TODO: Remove this line after implementing authentication
@@ -9,7 +8,6 @@ export default function DynamicRoute(props: {
   landingPage: boolean;
   element: any;
 }) {
-
   if (props.authenticationPage && userToken) {
     return <Navigate to="/" />;
   } else if (!props.authenticationPage && !props.landingPage && !userToken) {

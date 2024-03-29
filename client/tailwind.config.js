@@ -14,10 +14,13 @@ module.exports = {
       'content': '#F9FBFF',
       'content-highlight': '#FFFFFF',
 
+      'dashboard': '#E6E2FF',
+
       'mobile-nav-highlight': '#a89bff',
       'mobile-nav-hover': '#665CA4',
 
       'text-primary': '#000000',
+      'text-clickable': '#2B14CE',
       'text-inactive': '#A0A0A0',
 
       'past-highlight': '#DFDDDD',

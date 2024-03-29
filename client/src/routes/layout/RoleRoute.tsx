@@ -1,6 +1,3 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
-
 // TODO: Remove this line after implementing authorization
 const userAdmin = false;
 
