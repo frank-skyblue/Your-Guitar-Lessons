@@ -1,6 +1,10 @@
 import React from "react";
 import { getMockCalendarEvents } from "../mock/getMockData";
 import { PlayIcon } from "@heroicons/react/24/solid";
+import PastModal from "../components/modals/PastModal";
+import BookedModal from "../components/modals/BookedModal";
+import AvailableModal from "../components/modals/AvailableModal";
+import { DateType } from "../util/types";
 
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const months = [
@@ -20,12 +24,33 @@ const months = [
 const calendarEvents = getMockCalendarEvents();
 
 const Calendar: React.FC = () => {
+  const [dateObj, setDateObj] = React.useState<DateType | null>(null);
+  const [showModal, setShowModal] = React.useState(false);
+  const [modalType, setModalType] = React.useState("");
+
   return (
-    <div className="h-full p-2 gap-y-2 md:gap-y-0 md:px-10 md:py-5 flex flex-col">
-      <Header />
-      <CalendarContents />
-      <CalendarContentsMobile />
-    </div>
+    <>
+      <div
+        className={`h-full p-2 gap-y-2 md:gap-y-0 md:px-10 md:py-5 flex flex-col ${
+          showModal ? "blur-sm" : ""
+        }`}
+      >
+        <Header />
+        <CalendarContents
+          setShowModal={setShowModal}
+          setModalType={setModalType}
+          setDateObj={setDateObj}
+        />
+        <CalendarContentsMobile />
+      </div>
+      {showModal ? (
+        <Modal
+          dateObj={dateObj}
+          setShowModal={setShowModal}
+          modalType={modalType}
+        />
+      ) : null}
+    </>
   );
 };
 
@@ -55,7 +80,7 @@ const Header = () => {
   );
 };
 
-const CalendarContents = () => {
+const CalendarContents = ({ setShowModal, setModalType, setDateObj }: any) => {
   const Header = () => (
     <div className="basis-10 flex divide-x-2 divide-text-primary/15">
       {days.map((day) => (
@@ -69,14 +94,22 @@ const CalendarContents = () => {
     </div>
   );
 
-  const Date = ({ date }: any) =>
+  const Date = ({ date }: { date: number }) =>
     date > 0 ? (
       <div className="ml-2">{date}</div>
     ) : (
       <div className="h-full w-full bg-text-inactive/10"></div>
     );
 
-  const Events = ({ events }: { events: any }) =>
+  const Events = ({
+    dateObj,
+    setDateObj,
+    events,
+  }: {
+    dateObj: DateType;
+    setDateObj: any;
+    events: any;
+  }) =>
     events.map(({ type, time, address }: any) => (
       <div
         key={time}
@@ -86,7 +119,12 @@ const CalendarContents = () => {
             : type === "booked"
             ? "bg-booked-highlight"
             : "bg-available-highlight"
-        } border-l-4 border-text-primary/50 px-0.5 py-1.5`}
+        } border-l-4 border-text-primary/50 px-0.5 py-1.5 hover:cursor-pointer`}
+        onClick={() => {
+          setModalType(type);
+          setShowModal(true);
+          setDateObj(dateObj);
+        }}
       >
         <div className="text-xs font-semibold">{time}</div>
         {address && <div className="text-xs">{address}</div>}
@@ -104,19 +142,27 @@ const CalendarContents = () => {
             key={i}
             className="basis-0 h-0 grow flex divide-x-2 divide-text-primary/15 overflow-y-hidden"
           >
-            {calendarEvents.slice(i * 7, i * 7 + 7).map(({ date, events }) => (
-              // Date Box
-              <div
-                key={date > 0 ? date : Math.random()}
-                className="h-full basis-0 grow text-sm font-normal flex flex-col border-b-2 border-text-primary/15 overflow-y-hidden"
-              >
-                {/* Date */}
-                <Date date={date} />
-                <div className="mt-auto flex flex-col gap-y-0.5 overflow-y-scroll">
-                  <Events events={events} />
-                </div>
-              </div>
-            ))}
+            {calendarEvents
+              .slice(i * 7, i * 7 + 7)
+              .map(
+                ({ dateObj, events }: { dateObj: DateType; events: any }) => (
+                  // Date Box
+                  <div
+                    key={dateObj.date > 0 ? dateObj.date : Math.random()}
+                    className="h-full basis-0 grow text-sm font-normal flex flex-col border-b-2 border-text-primary/15 overflow-y-hidden"
+                  >
+                    {/* Date */}
+                    <Date date={dateObj.date} />
+                    <div className="mt-auto flex flex-col gap-y-0.5 overflow-y-scroll">
+                      <Events
+                        dateObj={dateObj}
+                        setDateObj={setDateObj}
+                        events={events}
+                      />
+                    </div>
+                  </div>
+                )
+              )}
           </div>
         ))}
       </div>
@@ -145,12 +191,12 @@ const CalendarContentsMobile = () => {
   return (
     <div className="md:hidden grow flex flex-col gap-y-3 overflow-y-scroll">
       {calendarEvents.map(
-        ({ date, events }) =>
+        ({ dateObj, events }: { dateObj: DateType; events: any }) =>
           events.length > 0 && (
-            <div key={date} className="flex flex-col gap-y-1">
+            <div key={dateObj.date} className="flex flex-col gap-y-1">
               {/* Date */}
               <div className="text-sm font-normal text-center border-b-2 border-text-primary/15">
-                {date}
+                {dateObj.date}
               </div>
               {/* Events */}
               <div className="flex flex-col gap-y-0.5 overflow-y-scroll">
@@ -161,6 +207,31 @@ const CalendarContentsMobile = () => {
       )}
     </div>
   );
+};
+
+const Modal = ({ setShowModal, modalType, dateObj, infoObj }: any) => {
+  switch (modalType) {
+    case "past":
+      return (
+        <PastModal
+          setShowModal={setShowModal}
+          dateObj={dateObj}
+          infoObj={infoObj}
+        />
+      );
+    case "booked":
+      return (
+        <BookedModal
+          setShowModal={setShowModal}
+          dateObj={dateObj}
+          infoObj={infoObj}
+        />
+      );
+    case "available":
+      return <AvailableModal setShowModal={setShowModal} />;
+    default:
+      return null;
+  }
 };
 
 export default Calendar;

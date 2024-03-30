@@ -105,19 +105,21 @@ const CalendarContents = () => {
             key={i}
             className="basis-0 h-0 grow flex divide-x-2 divide-text-primary/15 overflow-y-hidden"
           >
-            {calendarEvents.slice(i * 7, i * 7 + 7).map(({ date, events }) => (
-              // Date Box
-              <div
-                key={date > 0 ? date : Math.random()}
-                className="h-full basis-0 grow text-sm font-normal flex flex-col border-b-2 border-text-primary/15 overflow-y-hidden"
-              >
-                {/* Date */}
-                <Date date={date} />
-                <div className="mt-auto flex flex-col gap-y-0.5 overflow-y-scroll">
-                  <Events events={events} />
+            {calendarEvents
+              .slice(i * 7, i * 7 + 7)
+              .map(({ date, events }: any) => (
+                // Date Box
+                <div
+                  key={date.date > 0 ? date.date : Math.random()}
+                  className="h-full basis-0 grow text-sm font-normal flex flex-col border-b-2 border-text-primary/15 overflow-y-hidden"
+                >
+                  {/* Date */}
+                  <Date date={date.date} />
+                  <div className="mt-auto flex flex-col gap-y-0.5 overflow-y-scroll">
+                    <Events events={events} />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         ))}
       </div>
@@ -146,12 +148,12 @@ const CalendarContentsMobile = () => {
   return (
     <div className="md:hidden grow flex flex-col gap-y-3 overflow-y-scroll">
       {calendarEvents.map(
-        ({ date, events }) =>
+        ({ date, events }: any) =>
           events.length > 0 && (
-            <div key={date} className="flex flex-col gap-y-1">
+            <div key={date.date} className="flex flex-col gap-y-1">
               {/* Date */}
               <div className="text-sm font-normal text-center border-b-2 border-text-primary/15">
-                {date}
+                {date.date}
               </div>
               {/* Events */}
               <div className="flex flex-col gap-y-0.5 overflow-y-scroll">

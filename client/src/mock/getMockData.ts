@@ -143,39 +143,84 @@ const getMockPreviousLessons = (): PreviousLessonsObjType[] => {
 const getMockCalendarEvents = () => {
     return [
         {
-            date: -1,
+            dateObj: {
+                day: 'Saturday',
+                date: -1,
+                month: '',
+                year: -1
+            },
             events: []
         },
         {
-            date: -1,
+            dateObj: {
+                day: 'Saturday',
+                date: -1,
+                month: '',
+                year: -1
+            },
             events: []
         },
         {
-            date: -1,
+            dateObj: {
+                day: 'Saturday',
+                date: -1,
+                month: '',
+                year: -1
+            },
             events: []
         },
         {
-            date: -1,
+            dateObj: {
+                day: 'Saturday',
+                date: -1,
+                month: '',
+                year: -1
+            },
             events: []
         },
         {
-            date: -1,
+            dateObj: {
+                day: 'Saturday',
+                date: -1,
+                month: '',
+                year: -1
+            },
             events: []
         },
         {
-            date: 1,
+            dateObj: {
+                day: 'Friday',
+                date: 1,
+                month: 'March',
+                year: 2024
+            },
             events: []
         },
         {
-            date: 2,
+            dateObj: {
+                day: 'Saturday',
+                date: 2,
+                month: 'March',
+                year: 2024
+            },
             events: []
         },
         {
-            date: 3,
+            dateObj: {
+                day: 'Sunday',
+                date: 3,
+                month: 'March',
+                year: 2024
+            },
             events: []
         },
         {
-            date: 4,
+            dateObj: {
+                day: 'Monday',
+                date: 4,
+                month: 'March',
+                year: 2024
+            },
             events: [
                 {
                     type: 'past',
@@ -185,11 +230,21 @@ const getMockCalendarEvents = () => {
             ]
         },
         {
-            date: 5,
+            dateObj: {
+                day: 'Tuesday',
+                date: 5,
+                month: 'March',
+                year: 2024
+            },
             events: []
         },
         {
-            date: 6,
+            dateObj: {
+                day: 'Wednesday',
+                date: 6,
+                month: 'March',
+                year: 2024
+            },
             events: [
                 {
                     type: 'booked',
@@ -199,15 +254,30 @@ const getMockCalendarEvents = () => {
             ]
         },
         {
-            date: 7,
+            dateObj: {
+                day: 'Thursday',
+                date: 7,
+                month: 'March',
+                year: 2024
+            },
             events: []
         },
         {
-            date: 8,
+            dateObj: {
+                day: 'Friday',
+                date: 8,
+                month: 'March',
+                year: 2024
+            },
             events: []
         },
         {
-            date: 9,
+            dateObj: {
+                day: 'Saturday',
+                date: 9,
+                month: 'March',
+                year: 2024
+            },
             events: [
                 {
                     type: 'booked',
@@ -227,23 +297,48 @@ const getMockCalendarEvents = () => {
             ]
         },
         {
-            date: 10,
+            dateObj: {
+                day: 'Sunday',
+                date: 10,
+                month: 'March',
+                year: 2024
+            },
             events: []
         },
         {
-            date: 11,
+            dateObj: {
+                day: 'Monday',
+                date: 11,
+                month: 'March',
+                year: 2024
+            },
             events: []
         },
         {
-            date: 12,
+            dateObj: {
+                day: 'Tuesday',
+                date: 12,
+                month: 'March',
+                year: 2024
+            },
             events: []
         },
         {
-            date: 13,
+            dateObj: {
+                day: 'Wednesday',
+                date: 13,
+                month: 'March',
+                year: 2024
+            },
             events: []
         },
         {
-            date: 14,
+            dateObj: {
+                day: 'Thursday',
+                date: 14,
+                month: 'March',
+                year: 2024
+            },
             events: [
                 {
                     type: 'available',
@@ -258,15 +353,30 @@ const getMockCalendarEvents = () => {
             ]
         },
         {
-            date: 15,
+            dateObj: {
+                day: 'Friday',
+                date: 15,
+                month: 'March',
+                year: 2024
+            },
             events: []
         },
         {
-            date: 16,
+            dateObj: {
+                day: 'Saturday',
+                date: 16,
+                month: 'March',
+                year: 2024
+            },
             events: []
         },
         {
-            date: 17,
+            dateObj: {
+                day: 'Sunday',
+                date: 17,
+                month: 'March',
+                year: 2024
+            },
             events: [
                 {
                     type: 'available',
@@ -281,15 +391,30 @@ const getMockCalendarEvents = () => {
             ]
         },
         {
-            date: 18,
+            dateObj: {
+                day: 'Monday',
+                date: 18,
+                month: 'March',
+                year: 2024
+            },
             events: []
         },
         {
-            date: 19,
+            dateObj: {
+                day: 'Tuesday',
+                date: 19,
+                month: 'March',
+                year: 2024
+            },
             events: []
         },
         {
-            date: 20,
+            dateObj: {
+                day: 'Wednesday',
+                date: 20,
+                month: 'March',
+                year: 2024
+            },
             events: [
                 {
                     type: 'available',
@@ -304,19 +429,39 @@ const getMockCalendarEvents = () => {
             ]
         },
         {
-            date: 21,
+            dateObj: {
+                day: 'Thursday',
+                date: 21,
+                month: 'March',
+                year: 2024
+            },
             events: []
         },
         {
-            date: 22,
+            dateObj: {
+                day: 'Friday',
+                date: 22,
+                month: 'March',
+                year: 2024
+            },
             events: []
         },
         {
-            date: 23,
+            dateObj: {
+                day: 'Saturday',
+                date: 23,
+                month: 'March',
+                year: 2024
+            },
             events: []
         },
         {
-            date: 24,
+            dateObj: {
+                day: 'Sunday',
+                date: 24,
+                month: 'March',
+                year: 2024
+            },
             events: [
                 {
                     type: 'available',
@@ -331,11 +476,21 @@ const getMockCalendarEvents = () => {
             ]
         },
         {
-            date: 25,
+            dateObj: {
+                day: 'Monday',
+                date: 25,
+                month: 'March',
+                year: 2024
+            },
             events: []
         },
         {
-            date: 26,
+            dateObj: {
+                day: 'Tuesday',
+                date: 26,
+                month: 'March',
+                year: 2024
+            },
             events: [
                 {
                     type: 'available',
@@ -350,11 +505,21 @@ const getMockCalendarEvents = () => {
             ]
         },
         {
-            date: 27,
+            dateObj: {
+                day: 'Wednesday',
+                date: 27,
+                month: 'March',
+                year: 2024
+            },
             events: []
         },
         {
-            date: 28,
+            dateObj: {
+                day: 'Thursday',
+                date: 28,
+                month: 'March',
+                year: 2024
+            },
             events: [
                 {
                     type: 'available',
@@ -369,11 +534,21 @@ const getMockCalendarEvents = () => {
             ]
         },
         {
-            date: 29,
+            dateObj: {
+                day: 'Friday',
+                date: 29,
+                month: 'March',
+                year: 2024
+            },
             events: []
         },
         {
-            date: 30,
+            dateObj: {
+                day: 'Saturday',
+                date: 30,
+                month: 'March',
+                year: 2024
+            },
             events: [
                 {
                     type: 'available',
@@ -388,30 +563,66 @@ const getMockCalendarEvents = () => {
             ]
         },
         {
-            date: 31,
-            events: []
-        },{
-            date: -1,
-            events: []
-        },
-        {
-            date: -1,
+            dateObj: {
+                day: 'Sunday',
+                date: 31,
+                month: 'March',
+                year: 2024
+            },
             events: []
         },
         {
-            date: -1,
+            dateObj: {
+                day: 'Monday',
+                date: -1,
+                month: '',
+                year: -1
+            },
             events: []
         },
         {
-            date: -1,
+            dateObj: {
+                day: 'Tuesday',
+                date: -1,
+                month: '',
+                year: -1
+            },
             events: []
         },
         {
-            date: -1,
+            dateObj: {
+                day: 'Wednesday',
+                date: -1,
+                month: '',
+                year: -1
+            },
             events: []
         },
         {
-            date: -1,
+            dateObj: {
+                day: 'Thursday',
+                date: -1,
+                month: '',
+                year: -1
+            },
+            events: []
+        },
+        {
+            dateObj: {
+                day: 'Friday',
+                date: -1,
+                month: '',
+                year: -1
+            },
+            events: []
+        },
+        {
+            dateObj: {
+                day: 'Saturday',
+                date: -1,
+                month: '',
+                year: -1
+            },
             events: []
         },
     ];

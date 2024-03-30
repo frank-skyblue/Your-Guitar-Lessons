@@ -11,5 +11,11 @@ type PreviousLessonsObjType = {
     downloadable: string;
 };
 
-export type { UpcomingLessonsObjType, PreviousLessonsObjType };
+type DateType = {
+    day: string;
+    date: number;
+    month: string;
+    year: number;
+};
 
+export type { UpcomingLessonsObjType, PreviousLessonsObjType, DateType };
