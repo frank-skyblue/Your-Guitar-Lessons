@@ -1,21 +1,52 @@
 import React from "react";
-import { DateType } from "../../util/types";
+import { DateType, InfoType } from "../../util/types";
 
 interface PastModalProps {
-  setShowModal: (show: boolean) => void;
   dateObj: DateType;
-  infoObj: {
-    Student: string;
-    Location: string;
-    File: string;
-  };
+  infoObj: InfoType;
+  setShowModal: any;
 }
 
 const PastModal: React.FC<PastModalProps> = ({
-  setShowModal,
   dateObj,
   infoObj,
+  setShowModal,
 }) => {
+  const Header = () => {
+    return (
+      <div className="flex flex-col p-3 pb-1 border-b border-solid border-text-primary/50 rounded-t">
+        <h3 className="text-xl font-semibold">
+          {dateObj.day} {dateObj.month} {dateObj.date}, {dateObj.year} -{" "}
+          {infoObj.time}
+        </h3>
+        <p>{infoObj.address}</p>
+      </div>
+    );
+  };
+
+  const Content = () => {
+    return (
+      <div className="px-3 py-2">
+        <h4>Lesson 1</h4>
+        <p className="text-text-clickable underline">file.pdf</p>
+      </div>
+    );
+  };
+
+  const Footer = () => {
+    return (
+      <div className="flex justify-center py-3 border-t border-solid border-text-primary/50 rounded-b">
+        <button
+          className="bg-booked-highlight text-sm font-bold uppercase px-4 py-2 outline-none rounded"
+          type="button"
+          onClick={() => setShowModal(false)}
+        >
+          Close
+        </button>
+      </div>
+    );
+  };
+
   return (
     <>
       <div
@@ -23,56 +54,18 @@ const PastModal: React.FC<PastModalProps> = ({
         onClick={() => setShowModal(false)}
       >
         <div className="relative w-auto my-6 mx-auto max-w-xl">
-          {/*content*/}
           <div
             className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-content outline-none focus:outline-none"
             onClick={(e) => e.stopPropagation()}
           >
-            {/*header*/}
-            <Header dateObj={dateObj} />
-            {/*body*/}
-            <div className="relative p-6 flex-auto">
-              <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
-                I always felt like I could do anything. That’s the main thing
-                people are controlled by! Thoughts- their perception of
-                themselves! They're slowed down by their perception of
-                themselves. If you're taught you can’t do anything, you won’t do
-                anything. I was taught I could do everything.
-              </p>
-            </div>
-            {/*footer*/}
-            <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
-              <button
-                className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                type="button"
-                onClick={() => setShowModal(false)}
-              >
-                Close
-              </button>
-              <button
-                className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                type="button"
-                onClick={() => setShowModal(false)}
-              >
-                Save Changes
-              </button>
-            </div>
+            <Header />
+            <Content />
+            <Footer />
           </div>
         </div>
       </div>
       <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
     </>
-  );
-};
-
-const Header = ({ dateObj }: any) => {
-  return (
-    <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-      <h3 className="text-2xl tracking-wide">
-        <span className="text-3xl font-semibold">Leyan</span> - {dateObj.day}{" "}
-        {dateObj.month} {dateObj.date}, {dateObj.year}
-      </h3>
-    </div>
   );
 };
 

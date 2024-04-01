@@ -1,5 +1,7 @@
 import { CalendarEventType, PreviousLessonsObjType, UpcomingLessonsObjType } from "../util/types";
 
+const getUser = () => "Leyan";
+
 const getMockUpcomingLessons = (): UpcomingLessonsObjType[] => {
     return [
         {
@@ -629,4 +631,4 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
 
 }
 
-export { getMockUpcomingLessons, getMockPreviousLessons, getMockCalendarEvents };
+export { getUser, getMockUpcomingLessons, getMockPreviousLessons, getMockCalendarEvents };

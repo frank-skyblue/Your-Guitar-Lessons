@@ -23,6 +23,27 @@ type DateType = {
     year: number;
 };
 
+type InfoType = {
+    user: string;
+    address: string;
+    time: string;
+};
+
+type PastInfoType = {
+    user: string;
+    address: string;
+    time: string;
+};
+
+type BookedInfoType = {
+    user: string;
+    time: string;
+};
+
+type AvailableInfoType = {
+    time: string;
+};
+
 type EventType = {
     type: "past" | "booked" | "available";
     time: string;
@@ -31,4 +52,11 @@ type EventType = {
 
 type ModalType = "past" | "booked" | "available" | "";
 
-export type { UpcomingLessonsObjType, PreviousLessonsObjType, CalendarEventType, DateType, EventType, ModalType };
+export type { UpcomingLessonsObjType, 
+              PreviousLessonsObjType, 
+              CalendarEventType, 
+              DateType,
+              InfoType, 
+              PastInfoType, BookedInfoType, AvailableInfoType, 
+              EventType, 
+              ModalType };
