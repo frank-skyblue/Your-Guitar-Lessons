@@ -11,6 +11,11 @@ type PreviousLessonsObjType = {
     downloadable: string;
 };
 
+type CalendarEventType = {
+    dateObj: DateType;
+    events: EventType[] | [];
+}
+
 type DateType = {
     day: string;
     date: number;
@@ -18,4 +23,12 @@ type DateType = {
     year: number;
 };
 
-export type { UpcomingLessonsObjType, PreviousLessonsObjType, DateType };
+type EventType = {
+    type: "past" | "booked" | "available";
+    time: string;
+    address: string | null;
+};
+
+type ModalType = "past" | "booked" | "available" | "";
+
+export type { UpcomingLessonsObjType, PreviousLessonsObjType, CalendarEventType, DateType, EventType, ModalType };

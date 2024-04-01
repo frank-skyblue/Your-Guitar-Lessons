@@ -4,7 +4,12 @@ import { PlayIcon } from "@heroicons/react/24/solid";
 import PastModal from "../components/modals/PastModal";
 import BookedModal from "../components/modals/BookedModal";
 import AvailableModal from "../components/modals/AvailableModal";
-import { DateType } from "../util/types";
+import {
+  CalendarEventType,
+  DateType,
+  EventType,
+  ModalType,
+} from "../util/types";
 
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const months = [
@@ -21,12 +26,12 @@ const months = [
   "November",
   "December",
 ];
-const calendarEvents = getMockCalendarEvents();
+const calendarEvents: CalendarEventType[] = getMockCalendarEvents();
 
 const Calendar: React.FC = () => {
   const [dateObj, setDateObj] = React.useState<DateType | null>(null);
-  const [showModal, setShowModal] = React.useState(false);
-  const [modalType, setModalType] = React.useState("");
+  const [showModal, setShowModal] = React.useState<Boolean>(false);
+  const [modalType, setModalType] = React.useState<ModalType>("");
 
   return (
     <>
@@ -108,28 +113,55 @@ const CalendarContents = ({ setShowModal, setModalType, setDateObj }: any) => {
   }: {
     dateObj: DateType;
     setDateObj: any;
-    events: any;
-  }) =>
-    events.map(({ type, time, address }: any) => (
-      <div
-        key={time}
-        className={`${
-          type === "past"
-            ? "bg-past-highlight"
-            : type === "booked"
-            ? "bg-booked-highlight"
-            : "bg-available-highlight"
-        } border-l-4 border-text-primary/50 px-0.5 py-1.5 hover:cursor-pointer`}
-        onClick={() => {
-          setModalType(type);
-          setShowModal(true);
-          setDateObj(dateObj);
-        }}
-      >
-        <div className="text-xs font-semibold">{time}</div>
-        {address && <div className="text-xs">{address}</div>}
-      </div>
-    ));
+    events: EventType[];
+  }) => (
+    <>
+      {events.map(({ type, time, address }: EventType) => (
+        <div
+          key={time}
+          className={`${
+            type === "past"
+              ? "bg-past-highlight"
+              : type === "booked"
+              ? "bg-booked-highlight"
+              : "bg-available-highlight"
+          } border-l-4 border-text-primary/50 px-0.5 py-1.5 hover:cursor-pointer`}
+          onClick={() => {
+            setModalType(type);
+            setShowModal(true);
+            setDateObj(dateObj);
+          }}
+        >
+          <div className="text-xs font-semibold">{time}</div>
+          {address && <div className="text-xs">{address}</div>}
+        </div>
+      ))}
+    </>
+  );
+
+  const CalendarEvents = ({ i }: { i: number }) => (
+    <>
+      {calendarEvents
+        .slice(i * 7, i * 7 + 7)
+        .map(({ dateObj, events }: CalendarEventType) => (
+          // Date Box
+          <div
+            key={dateObj.date > 0 ? dateObj.date : Math.random()}
+            className="h-full basis-0 grow text-sm font-normal flex flex-col border-b-2 border-text-primary/15 overflow-y-hidden"
+          >
+            {/* Date */}
+            <Date date={dateObj.date} />
+            <div className="mt-auto flex flex-col gap-y-0.5 overflow-y-scroll">
+              <Events
+                dateObj={dateObj}
+                setDateObj={setDateObj}
+                events={events}
+              />
+            </div>
+          </div>
+        ))}
+    </>
+  );
 
   return (
     <div className="hidden grow bg-content-highlight md:flex flex-col border-2 border-b-0 border-text-primary/15">
@@ -142,27 +174,7 @@ const CalendarContents = ({ setShowModal, setModalType, setDateObj }: any) => {
             key={i}
             className="basis-0 h-0 grow flex divide-x-2 divide-text-primary/15 overflow-y-hidden"
           >
-            {calendarEvents
-              .slice(i * 7, i * 7 + 7)
-              .map(
-                ({ dateObj, events }: { dateObj: DateType; events: any }) => (
-                  // Date Box
-                  <div
-                    key={dateObj.date > 0 ? dateObj.date : Math.random()}
-                    className="h-full basis-0 grow text-sm font-normal flex flex-col border-b-2 border-text-primary/15 overflow-y-hidden"
-                  >
-                    {/* Date */}
-                    <Date date={dateObj.date} />
-                    <div className="mt-auto flex flex-col gap-y-0.5 overflow-y-scroll">
-                      <Events
-                        dateObj={dateObj}
-                        setDateObj={setDateObj}
-                        events={events}
-                      />
-                    </div>
-                  </div>
-                )
-              )}
+            <CalendarEvents i={i} />
           </div>
         ))}
       </div>
