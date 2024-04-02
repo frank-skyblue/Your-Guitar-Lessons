@@ -12,8 +12,6 @@ import {
   ModalType,
   InfoType,
   PastInfoType,
-  BookedInfoType,
-  AvailableInfoType,
 } from "../util/types";
 
 const Calendar: React.FC = () => {
@@ -23,10 +21,6 @@ const Calendar: React.FC = () => {
   const [pastInfoObj, setPastInfoObj] = React.useState<PastInfoType | null>(
     null
   );
-  const [bookedInfoObj, setBookedInfoObj] =
-    React.useState<BookedInfoType | null>(null);
-  const [availableInfoObj, setAvailableInfoObj] =
-    React.useState<AvailableInfoType | null>(null);
   const [showModal, setShowModal] = React.useState<Boolean>(false);
   const [modalType, setModalType] = React.useState<ModalType>("");
 
@@ -44,6 +38,7 @@ const Calendar: React.FC = () => {
           setModalType={setModalType}
           setDateObj={setDateObj}
           setInfoObj={setInfoObj}
+          setPastInfoObj={setPastInfoObj}
         />
         <CalendarContentsMobile calendarEvents={calendarEvents} />
       </div>
@@ -51,6 +46,7 @@ const Calendar: React.FC = () => {
         <Modal
           dateObj={dateObj}
           infoObj={infoObj}
+          pastInfoObj={pastInfoObj}
           modalType={modalType}
           setShowModal={setShowModal}
         />
@@ -59,26 +55,39 @@ const Calendar: React.FC = () => {
   );
 };
 
-const Modal = ({ dateObj, infoObj, modalType, setShowModal }: any) => {
+const Modal = ({
+  dateObj,
+  infoObj,
+  pastInfoObj,
+  modalType,
+  setShowModal,
+}: any) => {
   switch (modalType) {
     case "past":
       return (
         <PastModal
           dateObj={dateObj}
           infoObj={infoObj}
+          pastInfoObj={pastInfoObj}
           setShowModal={setShowModal}
         />
       );
     case "booked":
       return (
         <BookedModal
-          setShowModal={setShowModal}
           dateObj={dateObj}
           infoObj={infoObj}
+          setShowModal={setShowModal}
         />
       );
     case "available":
-      return <AvailableModal setShowModal={setShowModal} />;
+      return (
+        <AvailableModal
+          dateObj={dateObj}
+          infoObj={infoObj}
+          setShowModal={setShowModal}
+        />
+      );
     default:
       return null;
   }

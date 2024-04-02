@@ -3,7 +3,7 @@ import { PlayIcon } from "@heroicons/react/24/outline";
 import { months } from "../../util/constants";
 
 const Header: React.FC = () => {
-  const date = new Date();
+  const date = new Date("March 1, 2024");
   return (
     <div className="basis-12 flex flex-col gap-y-2 md:gap-y-0 md:flex-row justify-between">
       <div className="flex gap-x-2 justify-center items-center">

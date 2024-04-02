@@ -1,15 +1,17 @@
 import React from "react";
-import { DateType, InfoType } from "../../util/types";
+import { DateType, InfoType, PastInfoType } from "../../util/types";
 
 interface PastModalProps {
   dateObj: DateType;
   infoObj: InfoType;
+  pastInfoObj: PastInfoType;
   setShowModal: any;
 }
 
 const PastModal: React.FC<PastModalProps> = ({
   dateObj,
   infoObj,
+  pastInfoObj,
   setShowModal,
 }) => {
   const Header = () => {
@@ -27,8 +29,14 @@ const PastModal: React.FC<PastModalProps> = ({
   const Content = () => {
     return (
       <div className="px-3 py-2">
-        <h4>Lesson 1</h4>
-        <p className="text-text-clickable underline">file.pdf</p>
+        {pastInfoObj ? (
+          <>
+            <h4>{pastInfoObj.description}</h4>
+            <p className="text-text-clickable underline">{pastInfoObj.file}</p>
+          </>
+        ) : (
+          <h4>No file yet...</h4>
+        )}
       </div>
     );
   };

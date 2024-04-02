@@ -228,6 +228,10 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
                     type: 'past',
                     time: '8pm',
                     address: '17 Morris Dr.',
+                    fileObj: {
+                        description: 'Lesson 1',
+                        file: 'file.pdf'
+                    }
                 }
             ]
         },
@@ -252,6 +256,7 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
                     type: 'booked',
                     time: '4pm',
                     address: '17 Morris Dr.',
+                    fileObj: null
                 }
             ]
         },
@@ -285,16 +290,19 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
                     type: 'booked',
                     time: '4pm',
                     address: '17 Morris Dr.',
+                    fileObj: null
                 },
                 {
                     type: 'booked',
                     time: '6pm',
                     address: '17 Morris Dr.',
+                    fileObj: null
                 },
                 {
                     type: 'booked',
                     time: '7pm',
                     address: '17 Morris Dr.',
+                    fileObj: null
                 }
             ]
         },
@@ -345,12 +353,14 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
                 {
                     type: 'available',
                     time: '4pm',
-                    address: null
+                    address: null,
+                    fileObj: null
                 },
                 {
                     type: 'available',
                     time: '6pm',
-                    address: null
+                    address: null,
+                    fileObj: null
                 }
             ]
         },
@@ -383,12 +393,14 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
                 {
                     type: 'available',
                     time: '4pm',
-                    address: null
+                    address: null,
+                    fileObj: null
                 },
                 {
                     type: 'available',
                     time: '6pm',
-                    address: null
+                    address: null,
+                    fileObj: null
                 }
             ]
         },
@@ -421,12 +433,14 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
                 {
                     type: 'available',
                     time: '4pm',
-                    address: null
+                    address: null,
+                    fileObj: null
                 },
                 {
                     type: 'available',
                     time: '6pm',
-                    address: null
+                    address: null,
+                    fileObj: null
                 }
             ]
         },
@@ -468,12 +482,14 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
                 {
                     type: 'available',
                     time: '4pm',
-                    address: null
+                    address: null,
+                    fileObj: null
                 },
                 {
                     type: 'available',
                     time: '6pm',
-                    address: null
+                    address: null,
+                    fileObj: null
                 }
             ]
         },
@@ -497,12 +513,14 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
                 {
                     type: 'available',
                     time: '4pm',
-                    address: null
+                    address: null,
+                    fileObj: null
                 },
                 {
                     type: 'available',
                     time: '6pm',
-                    address: null
+                    address: null,
+                    fileObj: null
                 }
             ]
         },
@@ -526,12 +544,14 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
                 {
                     type: 'available',
                     time: '4pm',
-                    address: null
+                    address: null,
+                    fileObj: null
                 },
                 {
                     type: 'available',
                     time: '6pm',
-                    address: null
+                    address: null,
+                    fileObj: null
                 }
             ]
         },
@@ -555,12 +575,14 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
                 {
                     type: 'available',
                     time: '4pm',
-                    address: null
+                    address: null,
+                    fileObj: null
                 },
                 {
                     type: 'available',
                     time: '6pm',
-                    address: null
+                    address: null,
+                    fileObj: null
                 }
             ]
         },
@@ -631,4 +653,72 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
 
 }
 
-export { getUser, getMockUpcomingLessons, getMockPreviousLessons, getMockCalendarEvents };
+const getAvailableTimes = (): CalendarEventType[] => [
+    {
+        dateObj: {
+            day: 'Thursday',
+            date: 14,
+            month: 'March',
+            year: 2024
+        },
+        events: [
+            {
+                type: 'available',
+                time: '4pm',
+                address: null,
+                fileObj: null
+            },
+            {
+                type: 'available',
+                time: '6pm',
+                address: null,
+                fileObj: null
+            }
+        ]
+    },
+    {
+        dateObj: {
+            day: 'Sunday',
+            date: 17,
+            month: 'March',
+            year: 2024
+        },
+        events: [
+            {
+                type: 'available',
+                time: '4pm',
+                address: null,
+                fileObj: null
+            },
+            {
+                type: 'available',
+                time: '6pm',
+                address: null,
+                fileObj: null
+            }
+        ]
+    },{
+        dateObj: {
+            day: 'Wednesday',
+            date: 20,
+            month: 'March',
+            year: 2024
+        },
+        events: [
+            {
+                type: 'available',
+                time: '4pm',
+                address: null,
+                fileObj: null
+            },
+            {
+                type: 'available',
+                time: '6pm',
+                address: null,
+                fileObj: null
+            }
+        ]
+    },
+]
+
+export { getUser, getMockUpcomingLessons, getMockPreviousLessons, getMockCalendarEvents, getAvailableTimes };

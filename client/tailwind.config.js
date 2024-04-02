@@ -21,12 +21,15 @@ module.exports = {
 
       'text-primary': '#000000',
       'text-clickable': '#2B14CE',
+      'text-caution': '#FCFF76',
+      'text-warning': '#FF5E5E',
       'text-inactive': '#A0A0A0',
 
       'past-highlight': '#DFDDDD',
       'booked-highlight': '#BEBDFF',
       'available-highlight': "#B2FDAC",
 
+      'selected': '#8DCC7E',
     },
     extend: {},
   },

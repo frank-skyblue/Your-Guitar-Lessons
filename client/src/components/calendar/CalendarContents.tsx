@@ -8,6 +8,7 @@ interface CalendarContentsProps {
   setModalType: any;
   setDateObj: any;
   setInfoObj: any;
+  setPastInfoObj: any;
 }
 
 const CalendarContents: React.FC<CalendarContentsProps> = ({
@@ -16,6 +17,7 @@ const CalendarContents: React.FC<CalendarContentsProps> = ({
   setModalType,
   setDateObj,
   setInfoObj,
+  setPastInfoObj,
 }) => {
   const user = getUser();
 
@@ -50,7 +52,7 @@ const CalendarContents: React.FC<CalendarContentsProps> = ({
       events: EventType[];
     }) => (
       <>
-        {events.map(({ type, time, address }: EventType) => (
+        {events.map(({ type, time, address, fileObj }: EventType) => (
           <div
             key={time}
             className={`${
@@ -65,6 +67,7 @@ const CalendarContents: React.FC<CalendarContentsProps> = ({
               setShowModal(true);
               setDateObj(dateObj);
               setInfoObj({ user, address, time });
+              if (type === "past") setPastInfoObj(fileObj);
             }}
           >
             <div className="text-xs font-semibold">{time}</div>
