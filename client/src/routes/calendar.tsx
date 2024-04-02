@@ -40,7 +40,14 @@ const Calendar: React.FC = () => {
           setInfoObj={setInfoObj}
           setPastInfoObj={setPastInfoObj}
         />
-        <CalendarContentsMobile calendarEvents={calendarEvents} />
+        <CalendarContentsMobile
+          calendarEvents={calendarEvents}
+          setShowModal={setShowModal}
+          setModalType={setModalType}
+          setDateObj={setDateObj}
+          setInfoObj={setInfoObj}
+          setPastInfoObj={setPastInfoObj}
+        />
       </div>
       {showModal ? (
         <Modal
