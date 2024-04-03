@@ -1,17 +1,15 @@
 import React from "react";
-import { DateType, InfoType, PastInfoType } from "../../util/types";
+import { DateType, InfoType } from "../../util/types";
 
-interface PastModalAdminProps {
+interface AvailableModalAdminProps {
   dateObj: DateType;
   infoObj: InfoType;
-  pastInfoObj: PastInfoType;
   setShowModal: any;
 }
 
-const PastModalAdmin: React.FC<PastModalAdminProps> = ({
+const AvailableModalAdmin: React.FC<AvailableModalAdminProps> = ({
   dateObj,
   infoObj,
-  pastInfoObj,
   setShowModal,
 }) => {
   const Header = () => {
@@ -26,24 +24,16 @@ const PastModalAdmin: React.FC<PastModalAdminProps> = ({
     );
   };
 
-  const Content = () => {
-    return (
-      <div className="px-3 py-2">
-        {pastInfoObj ? (
-          <>
-            <h4>{pastInfoObj.description}</h4>
-            <p className="text-text-clickable underline">{pastInfoObj.file}</p>
-          </>
-        ) : (
-          <h4>No file yet...</h4>
-        )}
-      </div>
-    );
-  };
-
   const Footer = () => {
     return (
-      <div className="flex justify-center py-3 border-t border-solid border-text-primary/50 rounded-b">
+      <div className="flex justify-between p-3 pt-4 border-t border-solid border-text-primary/50 rounded-b">
+        <button
+          className="bg-available-highlight text-sm font-bold uppercase px-8 py-2 outline-none rounded"
+          type="button"
+          onClick={() => setShowModal(false)}
+        >
+          Book
+        </button>
         <button
           className="bg-booked-highlight text-sm font-bold uppercase px-4 py-2 outline-none rounded"
           type="button"
@@ -67,7 +57,6 @@ const PastModalAdmin: React.FC<PastModalAdminProps> = ({
             onClick={(e) => e.stopPropagation()}
           >
             <Header />
-            <Content />
             <Footer />
           </div>
         </div>
@@ -77,4 +66,4 @@ const PastModalAdmin: React.FC<PastModalAdminProps> = ({
   );
 };
 
-export default PastModalAdmin;
+export default AvailableModalAdmin;
