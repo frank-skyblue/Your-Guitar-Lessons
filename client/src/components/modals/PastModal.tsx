@@ -45,7 +45,7 @@ const PastModal: React.FC<PastModalProps> = ({
     return (
       <div className="flex justify-center py-3 border-t border-solid border-text-primary/50 rounded-b">
         <button
-          className="bg-booked-highlight text-sm font-bold uppercase px-4 py-2 outline-none rounded"
+          className="bg-booked-highlight text-xs font-bold uppercase px-4 py-2 outline-none rounded"
           type="button"
           onClick={() => setShowModal(false)}
         >

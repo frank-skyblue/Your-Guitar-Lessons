@@ -28,14 +28,14 @@ const AvailableModal: React.FC<AvailableModalProps> = ({
     return (
       <div className="flex justify-between p-3 pt-4 border-t border-solid border-text-primary/50 rounded-b">
         <button
-          className="bg-available-highlight text-sm font-bold uppercase px-8 py-2 outline-none rounded"
+          className="bg-available-highlight text-xs font-bold uppercase px-8 py-2 outline-none rounded"
           type="button"
           onClick={() => setShowModal(false)}
         >
           Book
         </button>
         <button
-          className="bg-booked-highlight text-sm font-bold uppercase px-4 py-2 outline-none rounded"
+          className="bg-booked-highlight text-xs font-bold uppercase px-4 py-2 outline-none rounded"
           type="button"
           onClick={() => setShowModal(false)}
         >

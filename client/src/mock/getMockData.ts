@@ -1264,6 +1264,7 @@ export {
   getMockUpcomingLessons,
   getMockPreviousLessons,
   getMockCalendarEvents,
+  getMockCalendarEventsAdmin,
   getAvailableTimes,
   getMockStudents,
 };

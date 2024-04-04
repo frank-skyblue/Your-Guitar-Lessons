@@ -1,9 +1,13 @@
 import { getUser } from "../../mock/getMockData";
 import { days } from "../../util/constants";
-import { CalendarEventType, DateType, EventType } from "../../util/types";
+import {
+  CalendarEventAdminType,
+  DateType,
+  EventAdminType,
+} from "../../util/types";
 
 interface CalendarContentsAdminProps {
-  calendarEvents: CalendarEventType[];
+  calendarEvents: CalendarEventAdminType[];
   setShowModal: any;
   setModalType: any;
   setDateObj: any;
@@ -49,31 +53,36 @@ const CalendarContentsAdmin: React.FC<CalendarContentsAdminProps> = ({
     }: {
       dateObj: DateType;
       setDateObj: any;
-      events: EventType[];
+      events: EventAdminType[];
     }) => (
       <>
-        {events.map(({ type, time, address, fileObj }: EventType) => (
-          <div
-            key={time}
-            className={`${
-              type === "past"
-                ? "bg-past-highlight"
-                : type === "booked"
-                ? "bg-booked-highlight"
-                : "bg-available-highlight"
-            } border-l-4 border-text-primary/50 px-0.5 py-1.5 hover:cursor-pointer`}
-            onClick={() => {
-              setModalType(type);
-              setShowModal(true);
-              setDateObj(dateObj);
-              setInfoObj({ user, address, time });
-              if (type === "past") setPastInfoObj(fileObj);
-            }}
-          >
-            <div className="text-xs font-semibold">{time}</div>
-            {address && <div className="text-xs">{address}</div>}
-          </div>
-        ))}
+        {events.map(
+          ({ type, time, address, student, fileObj }: EventAdminType) => (
+            <div
+              key={time}
+              className={`${
+                type === "past"
+                  ? "bg-past-highlight"
+                  : type === "booked"
+                  ? "bg-booked-highlight"
+                  : "bg-available-highlight"
+              } border-l-4 border-text-primary/50 px-0.5 py-1.5 hover:cursor-pointer`}
+              onClick={() => {
+                setModalType(type);
+                setShowModal(true);
+                setDateObj(dateObj);
+                setInfoObj({ user, address, time });
+                if (type === "past") setPastInfoObj(fileObj);
+              }}
+            >
+              <div className="flex justify-between pr-0.5">
+                <div className="text-xs font-semibold">{time}</div>
+                <div className="text-xs">{student}</div>
+              </div>
+              {address && <div className="text-xs">{address}</div>}
+            </div>
+          )
+        )}
       </>
     );
 
@@ -81,7 +90,7 @@ const CalendarContentsAdmin: React.FC<CalendarContentsAdminProps> = ({
       <>
         {calendarEvents
           .slice(i * 7, i * 7 + 7)
-          .map(({ dateObj, events }: CalendarEventType) => (
+          .map(({ dateObj, events }: CalendarEventAdminType) => (
             // Date Box
             <div
               key={dateObj.date > 0 ? dateObj.date : Math.random()}

@@ -107,7 +107,7 @@ const BookedModalAdmin: React.FC<BookedModalAdminProps> = ({
         <div className="flex gap-x-2">
           {selectedTime ? (
             <button
-              className="bg-text-caution text-sm font-bold uppercase px-4 py-2 outline-none rounded"
+              className="bg-text-caution text-xs font-bold uppercase px-4 py-2 outline-none rounded"
               type="button"
               onClick={() => setShowModal(false)}
             >
@@ -115,7 +115,7 @@ const BookedModalAdmin: React.FC<BookedModalAdminProps> = ({
             </button>
           ) : (
             <button
-              className="bg-text-inactive text-sm font-bold uppercase px-4 py-2 outline-none rounded"
+              className="bg-text-inactive text-xs font-bold uppercase px-4 py-2 outline-none rounded"
               type="button"
               disabled
             >
@@ -123,7 +123,7 @@ const BookedModalAdmin: React.FC<BookedModalAdminProps> = ({
             </button>
           )}
           <button
-            className="bg-text-warning text-sm font-bold uppercase px-4 py-2 outline-none rounded"
+            className="bg-text-warning text-xs font-bold uppercase px-4 py-2 outline-none rounded"
             type="button"
             onClick={() => setShowModal(false)}
           >
@@ -132,7 +132,7 @@ const BookedModalAdmin: React.FC<BookedModalAdminProps> = ({
         </div>
 
         <button
-          className="bg-booked-highlight text-sm font-bold uppercase px-4 py-2 outline-none rounded"
+          className="bg-booked-highlight text-xs font-bold uppercase px-4 py-2 outline-none rounded"
           type="button"
           onClick={() => setShowModal(false)}
         >
