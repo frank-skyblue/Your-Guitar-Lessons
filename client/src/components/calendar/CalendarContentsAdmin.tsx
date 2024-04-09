@@ -23,8 +23,6 @@ const CalendarContentsAdmin: React.FC<CalendarContentsAdminProps> = ({
   setInfoObj,
   setPastInfoObj,
 }) => {
-  const user = getUser();
-
   const Header = () => (
     <div className="basis-10 flex divide-x-2 divide-text-primary/15">
       {days.map((day) => (
@@ -71,7 +69,7 @@ const CalendarContentsAdmin: React.FC<CalendarContentsAdminProps> = ({
                 setModalType(type);
                 setShowModal(true);
                 setDateObj(dateObj);
-                setInfoObj({ user, address, time });
+                setInfoObj({ user: student, address, time });
                 if (type === "past") setPastInfoObj(fileObj);
               }}
             >

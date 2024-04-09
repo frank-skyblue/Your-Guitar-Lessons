@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  getMockCalendarEvents,
-  getMockCalendarEventsAdmin,
-} from "../mock/getMockData";
+import { getMockCalendarEventsAdmin } from "../mock/getMockData";
 import CalendarContentsAdmin from "../components/calendar/CalendarContentsAdmin";
 import CalendarHeaderAdmin from "../components/calendar/CalendarHeaderAdmin";
 import CalendarContentsAdminMobile from "../components/calendar/CalendarContentsAdminMobile";

@@ -1,5 +1,6 @@
 import React from "react";
 import { DateType, InfoType, PastInfoType } from "../../util/types";
+import { TrashIcon } from "@heroicons/react/24/solid";
 
 interface PastModalAdminProps {
   dateObj: DateType;
@@ -17,9 +18,9 @@ const PastModalAdmin: React.FC<PastModalAdminProps> = ({
   const Header = () => {
     return (
       <div className="flex flex-col p-3 pb-1 border-b border-solid border-text-primary/50 rounded-t">
-        <h3 className="text-xl font-semibold">
-          {dateObj.day} {dateObj.month} {dateObj.date}, {dateObj.year} -{" "}
-          {infoObj.time}
+        <h3 className="text-xl">
+          <span className="font-semibold">{infoObj.user}</span> - {dateObj.day}{" "}
+          {dateObj.month} {dateObj.date}, {dateObj.year} @ {infoObj.time}
         </h3>
         <p>{infoObj.address}</p>
       </div>
@@ -27,23 +28,56 @@ const PastModalAdmin: React.FC<PastModalAdminProps> = ({
   };
 
   const Content = () => {
+    const [newDescription, setNewDescription] = React.useState<string>("");
     return (
-      <div className="px-3 py-2">
-        {pastInfoObj ? (
-          <>
-            <h4>{pastInfoObj.description}</h4>
-            <p className="text-text-clickable underline">{pastInfoObj.file}</p>
-          </>
-        ) : (
-          <h4>No file yet...</h4>
-        )}
+      <div className="flex flex-col px-3 py-2 gap-y-2">
+        <div>
+          {pastInfoObj ? (
+            <>
+              <h4>{pastInfoObj.description}</h4>
+              <p className="text-text-clickable underline">
+                {pastInfoObj.file}
+              </p>
+            </>
+          ) : (
+            <h4>No file yet...</h4>
+          )}
+        </div>
+        <div className="flex flex-col gap-y-2">
+          <h4 className="font-semibold">Make Changes</h4>
+          <input
+            className="border border-text-primary/30 rounded px-1"
+            type="text"
+            placeholder="new description"
+            value={newDescription}
+            onChange={(e) => setNewDescription(e.target.value)}
+          />
+          <p className="text-text-clickable underline">Attach a new file</p>
+        </div>
       </div>
     );
   };
 
   const Footer = () => {
     return (
-      <div className="flex justify-center py-3 border-t border-solid border-text-primary/50 rounded-b">
+      <div className="flex justify-between p-3 pt-4 border-t border-solid border-text-primary/50 rounded-b">
+        <div className="flex gap-x-2">
+          <button
+            className="bg-available-highlight text-xs font-bold uppercase px-8 py-2 outline-none rounded"
+            type="button"
+            onClick={() => setShowModal(false)}
+          >
+            Confirm
+          </button>
+          <button
+            className="bg-text-warning text-xs font-bold uppercase px-4 py-2 outline-none rounded"
+            type="button"
+            onClick={() => setShowModal(false)}
+          >
+            <TrashIcon className="w-5 h-5" />
+          </button>
+        </div>
+
         <button
           className="bg-booked-highlight text-xs font-bold uppercase px-4 py-2 outline-none rounded"
           type="button"
