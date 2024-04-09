@@ -19,7 +19,8 @@ const PastModalAdmin: React.FC<PastModalAdminProps> = ({
     return (
       <div className="flex flex-col p-3 pb-1 border-b border-solid border-text-primary/50 rounded-t">
         <h3 className="text-xl">
-          <span className="font-semibold">{infoObj.user}</span> - {dateObj.day}{" "}
+          <span className="font-semibold block md:inline">{infoObj.user}</span>{" "}
+          <span className="hidden md:inline">-</span> {dateObj.day}{" "}
           {dateObj.month} {dateObj.date}, {dateObj.year} @ {infoObj.time}
         </h3>
         <p>{infoObj.address}</p>

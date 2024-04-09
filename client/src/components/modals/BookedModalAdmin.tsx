@@ -1,6 +1,5 @@
 import React from "react";
 import { DateType, EventType, InfoType } from "../../util/types";
-import { getAvailableTimes } from "../../mock/getMockData";
 import { TrashIcon } from "@heroicons/react/24/solid";
 
 interface BookedModalAdminProps {
@@ -14,19 +13,12 @@ const BookedModalAdmin: React.FC<BookedModalAdminProps> = ({
   infoObj,
   setShowModal,
 }) => {
-  const availableTimes = getAvailableTimes();
-  const [selectedTime, setSelectedTime] = React.useState<{
-    date: number;
-    month: string;
-    year: number;
-    time: string;
-  } | null>(null);
-
   const Header = () => {
     return (
       <div className="flex flex-col p-3 pb-1 border-b border-solid border-text-primary/50 rounded-t">
         <h3 className="text-xl">
-          <span className="font-semibold">{infoObj.user}</span> - {dateObj.day}{" "}
+          <span className="font-semibold block md:inline">{infoObj.user}</span>{" "}
+          <span className="hidden md:inline">-</span> {dateObj.day}{" "}
           {dateObj.month} {dateObj.date}, {dateObj.year} @ {infoObj.time}
         </h3>
         <p>{infoObj.address}</p>
@@ -35,69 +27,45 @@ const BookedModalAdmin: React.FC<BookedModalAdminProps> = ({
   };
 
   const Content = () => {
-    const Events = ({
-      dateObj,
-      events,
-    }: {
-      dateObj: DateType;
-      events: EventType[];
-    }) => (
-      <>
-        {events.map(({ type, time, address }: any) => (
-          <div
-            key={time}
-            className={`${
-              type === "past"
-                ? "bg-past-highlight"
-                : type === "booked"
-                ? "bg-booked-highlight"
-                : "bg-available-highlight"
-            } flex justify-between border-l-4 border-text-primary/50 px-1 py-1.5 rounded-sm
-            ${
-              dateObj.date === selectedTime?.date &&
-              dateObj.month === selectedTime?.month &&
-              dateObj.year === selectedTime?.year &&
-              time === selectedTime?.time
-                ? "bg-selected"
-                : ""
-            }`}
-            onClick={() =>
-              setSelectedTime({
-                date: dateObj.date,
-                month: dateObj.month,
-                year: dateObj.year,
-                time,
-              })
-            }
-          >
-            <div className="text-xs font-semibold">{time}</div>
-            {address && <div className="text-xs">{address}</div>}
-          </div>
-        ))}
-      </>
-    );
-
     return (
-      <div className="px-3 py-2">
-        <h4 className="font-semibold">Available Times</h4>
-        <div className="flex flex-col gap-y-2">
-          {availableTimes.map(
-            ({ dateObj, events }: { dateObj: DateType; events: any }) =>
-              events.length > 0 && (
-                <div key={dateObj.date} className="flex flex-col gap-y-1">
-                  {/* Date */}
-                  <div className="text-sm font-normal text-center border-b-2 border-text-primary/15">
-                    {dateObj.date}
-                  </div>
-                  {/* Events */}
-                  <div className="flex flex-col gap-y-0.5">
-                    <Events dateObj={dateObj} events={events} />
-                  </div>
-                </div>
-              )
-          )}
+      <form className="px-3 py-2 flex flex-col gap-y-1">
+        <label className="text-sm font-semibold">Change Date</label>
+        <input
+          type="date"
+          className="border border-solid bg-content-highlight border-text-primary/50 rounded text-sm w-1/2 p-1"
+        />
+        <label className="text-sm font-semibold">Change Time</label>
+        <div className="flex flex-col md:flex-row gap-x-4 gap-y-2">
+          <select
+            className="border border-solid bg-content-highlight border-text-primary/50 rounded text-sm w-1/2 p-1"
+            defaultValue={infoObj.time.match(/\d+/)![0]}
+          >
+            {Array.from(Array(12).keys())
+              .map((i) => i + 1)
+              .map((time) => (
+                <option key={time} value={time}>
+                  {time}:00
+                </option>
+              ))}
+          </select>
+          <select
+            className="border border-solid bg-content-highlight border-text-primary/50 rounded text-sm w-1/2 p-1"
+            defaultValue={infoObj.time.match(/[a-z]+/i)![0]}
+          >
+            {["am", "pm"].map((time) => (
+              <option key={time} value={time}>
+                {time}
+              </option>
+            ))}
+          </select>
         </div>
-      </div>
+        <label className="text-sm font-semibold">Change Address</label>
+        <input
+          type="text"
+          className="border border-solid bg-content-highlight border-text-primary/50 rounded text-sm w-1/2 p-1"
+          defaultValue={infoObj.address}
+        />
+      </form>
     );
   };
 
@@ -105,23 +73,13 @@ const BookedModalAdmin: React.FC<BookedModalAdminProps> = ({
     return (
       <div className="flex justify-between p-3 pt-4 border-t border-solid border-text-primary/50 rounded-b">
         <div className="flex gap-x-2">
-          {selectedTime ? (
-            <button
-              className="bg-text-caution text-xs font-bold uppercase px-4 py-2 outline-none rounded"
-              type="button"
-              onClick={() => setShowModal(false)}
-            >
-              Reschedule
-            </button>
-          ) : (
-            <button
-              className="bg-text-inactive text-xs font-bold uppercase px-4 py-2 outline-none rounded"
-              type="button"
-              disabled
-            >
-              Reschedule
-            </button>
-          )}
+          <button
+            className="bg-available-highlight text-xs font-bold uppercase px-8 py-2 outline-none rounded"
+            type="button"
+            onClick={() => setShowModal(false)}
+          >
+            Confirm
+          </button>
           <button
             className="bg-text-warning text-xs font-bold uppercase px-4 py-2 outline-none rounded"
             type="button"

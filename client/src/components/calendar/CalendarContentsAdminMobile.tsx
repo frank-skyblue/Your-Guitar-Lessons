@@ -1,5 +1,10 @@
 import { getUser } from "../../mock/getMockData";
-import { CalendarEventType, DateType, EventType } from "../../util/types";
+import {
+  CalendarEventType,
+  DateType,
+  EventAdminType,
+  EventType,
+} from "../../util/types";
 
 interface CalendarContentsAdminMobileProps {
   calendarEvents: CalendarEventType[];
@@ -28,32 +33,39 @@ const CalendarContentsAdminMobile: React.FC<
     events,
   }: {
     dateObj: DateType;
-    events: EventType[];
     setDateObj: any;
+    events: EventAdminType[];
   }) => (
     <>
-      {events.map(({ type, time, address, fileObj }: any) => (
-        <div
-          key={time}
-          className={`${
-            type === "past"
-              ? "bg-past-highlight"
-              : type === "booked"
-              ? "bg-booked-highlight"
-              : "bg-available-highlight"
-          } flex justify-between border-l-4 border-text-primary/50 px-1 py-1.5 rounded-sm`}
-          onClick={() => {
-            setModalType(type);
-            setShowModal(true);
-            setDateObj(dateObj);
-            setInfoObj({ user, address, time });
-            if (type === "past") setPastInfoObj(fileObj);
-          }}
-        >
-          <div className="text-xs font-semibold">{time}</div>
-          {address && <div className="text-xs">{address}</div>}
-        </div>
-      ))}
+      {events.map(
+        ({ type, time, address, student, fileObj }: EventAdminType) => (
+          <div
+            key={time}
+            className={`${
+              type === "past"
+                ? "bg-past-highlight"
+                : type === "booked"
+                ? "bg-booked-highlight"
+                : "bg-available-highlight"
+            } flex border-l-4 border-text-primary/50 px-1 py-1.5 rounded-sm`}
+            onClick={() => {
+              setModalType(type);
+              setShowModal(true);
+              setDateObj(dateObj);
+              setInfoObj({ user: student, address, time });
+              if (type === "past") setPastInfoObj(fileObj);
+            }}
+          >
+            <div className="basis-1/3 text-left text-xs font-semibold">
+              {time}
+            </div>
+            <div className="basis-1/3 text-center text-xs">{student}</div>
+            {address && (
+              <div className="basis-1/3 text-right text-xs">{address}</div>
+            )}
+          </div>
+        )
+      )}
     </>
   );
 
