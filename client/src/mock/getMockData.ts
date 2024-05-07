@@ -10,33 +10,33 @@ const getUser = () => "Leyan";
 const getMockUpcomingLessons = (): UpcomingLessonsObjType[] => {
   return [
     {
-      day: "Monday",
+      day: 0,
       date: "2021-01-01",
-      time: "12:00",
+      time: "12pm",
       location: "17 Morris Dr",
     },
     {
-      day: "Tuesday",
+      day: 1,
       date: "2021-01-02",
-      time: "12:00",
+      time: "12pm",
       location: "17 Morris Dr",
     },
     {
-      day: "Wednesday",
+      day: 2,
       date: "2021-01-03",
-      time: "12:00",
+      time: "12pm",
       location: "17 Morris Dr",
     },
     {
-      day: "Thursday",
+      day: 3,
       date: "2021-01-04",
-      time: "12:00",
+      time: "12pm",
       location: "17 Morris Dr",
     },
     {
-      day: "Friday",
+      day: 4,
       date: "2021-01-05",
-      time: "12:00",
+      time: "12pm",
       location: "17 Morris Dr",
     },
   ];
@@ -150,82 +150,57 @@ const getMockPreviousLessons = (): PreviousLessonsObjType[] => {
 const getMockCalendarEvents = (): CalendarEventType[] => {
   return [
     {
-      dateObj: {
-        day: "Saturday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
+      dateObj: null,
+      events: [],
+    },
+    {
+      dateObj: null,
+      events: [],
+    },
+    {
+      dateObj: null,
+      events: [],
+    },
+    {
+      dateObj: null,
+      events: [],
+    },
+    {
+      dateObj: null,
       events: [],
     },
     {
       dateObj: {
-        day: "Saturday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
-      events: [],
-    },
-    {
-      dateObj: {
-        day: "Saturday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
-      events: [],
-    },
-    {
-      dateObj: {
-        day: "Saturday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
-      events: [],
-    },
-    {
-      dateObj: {
-        day: "Saturday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
-      events: [],
-    },
-    {
-      dateObj: {
-        day: "Friday",
+        day: 4,
         date: 1,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Saturday",
+        day: 5,
         date: 2,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Sunday",
+        day: 6,
         date: 3,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Monday",
+        day: 0,
         date: 4,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [
@@ -242,18 +217,18 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
     },
     {
       dateObj: {
-        day: "Tuesday",
+        day: 1,
         date: 5,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Wednesday",
+        day: 2,
         date: 6,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [
@@ -267,27 +242,27 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
     },
     {
       dateObj: {
-        day: "Thursday",
+        day: 3,
         date: 7,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Friday",
+        day: 4,
         date: 8,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Saturday",
+        day: 5,
         date: 9,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [
@@ -313,45 +288,45 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
     },
     {
       dateObj: {
-        day: "Sunday",
+        day: 6,
         date: 10,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Monday",
+        day: 0,
         date: 11,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Tuesday",
+        day: 1,
         date: 12,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Wednesday",
+        day: 2,
         date: 13,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Thursday",
+        day: 3,
         date: 14,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [
@@ -371,27 +346,27 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
     },
     {
       dateObj: {
-        day: "Friday",
+        day: 4,
         date: 15,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Saturday",
+        day: 5,
         date: 16,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Sunday",
+        day: 6,
         date: 17,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [
@@ -411,27 +386,27 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
     },
     {
       dateObj: {
-        day: "Monday",
+        day: 0,
         date: 18,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Tuesday",
+        day: 1,
         date: 19,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Wednesday",
+        day: 2,
         date: 20,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [
@@ -451,36 +426,36 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
     },
     {
       dateObj: {
-        day: "Thursday",
+        day: 3,
         date: 21,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Friday",
+        day: 4,
         date: 22,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Saturday",
+        day: 5,
         date: 23,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Sunday",
+        day: 6,
         date: 24,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [
@@ -500,18 +475,18 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
     },
     {
       dateObj: {
-        day: "Monday",
+        day: 0,
         date: 25,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Tuesday",
+        day: 1,
         date: 26,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [
@@ -531,18 +506,18 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
     },
     {
       dateObj: {
-        day: "Wednesday",
+        day: 2,
         date: 27,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Thursday",
+        day: 3,
         date: 28,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [
@@ -562,18 +537,18 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
     },
     {
       dateObj: {
-        day: "Friday",
+        day: 4,
         date: 29,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Saturday",
+        day: 5,
         date: 30,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [
@@ -593,65 +568,35 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
     },
     {
       dateObj: {
-        day: "Sunday",
+        day: 6,
         date: 31,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
-      dateObj: {
-        day: "Monday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
+      dateObj: null,
       events: [],
     },
     {
-      dateObj: {
-        day: "Tuesday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
+      dateObj: null,
       events: [],
     },
     {
-      dateObj: {
-        day: "Wednesday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
+      dateObj: null,
       events: [],
     },
     {
-      dateObj: {
-        day: "Thursday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
+      dateObj: null,
       events: [],
     },
     {
-      dateObj: {
-        day: "Friday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
+      dateObj: null,
       events: [],
     },
     {
-      dateObj: {
-        day: "Saturday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
+      dateObj: null,
       events: [],
     },
   ];
@@ -660,82 +605,57 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
 const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
   return [
     {
-      dateObj: {
-        day: "Saturday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
+      dateObj: null,
+      events: [],
+    },
+    {
+      dateObj: null,
+      events: [],
+    },
+    {
+      dateObj: null,
+      events: [],
+    },
+    {
+      dateObj: null,
+      events: [],
+    },
+    {
+      dateObj: null,
       events: [],
     },
     {
       dateObj: {
-        day: "Saturday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
-      events: [],
-    },
-    {
-      dateObj: {
-        day: "Saturday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
-      events: [],
-    },
-    {
-      dateObj: {
-        day: "Saturday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
-      events: [],
-    },
-    {
-      dateObj: {
-        day: "Saturday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
-      events: [],
-    },
-    {
-      dateObj: {
-        day: "Friday",
+        day: 4,
         date: 1,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Saturday",
+        day: 5,
         date: 2,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Sunday",
+        day: 6,
         date: 3,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Monday",
+        day: 0,
         date: 4,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [
@@ -753,18 +673,18 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
     },
     {
       dateObj: {
-        day: "Tuesday",
+        day: 1,
         date: 5,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Wednesday",
+        day: 2,
         date: 6,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [
@@ -779,27 +699,27 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
     },
     {
       dateObj: {
-        day: "Thursday",
+        day: 3,
         date: 7,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Friday",
+        day: 4,
         date: 8,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Saturday",
+        day: 5,
         date: 9,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [
@@ -828,45 +748,45 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
     },
     {
       dateObj: {
-        day: "Sunday",
+        day: 6,
         date: 10,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Monday",
+        day: 0,
         date: 11,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Tuesday",
+        day: 1,
         date: 12,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Wednesday",
+        day: 2,
         date: 13,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Thursday",
+        day: 3,
         date: 14,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [
@@ -888,27 +808,27 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
     },
     {
       dateObj: {
-        day: "Friday",
+        day: 4,
         date: 15,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Saturday",
+        day: 5,
         date: 16,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Sunday",
+        day: 6,
         date: 17,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [
@@ -930,27 +850,27 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
     },
     {
       dateObj: {
-        day: "Monday",
+        day: 0,
         date: 18,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Tuesday",
+        day: 1,
         date: 19,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Wednesday",
+        day: 2,
         date: 20,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [
@@ -972,36 +892,36 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
     },
     {
       dateObj: {
-        day: "Thursday",
+        day: 3,
         date: 21,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Friday",
+        day: 4,
         date: 22,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Saturday",
+        day: 5,
         date: 23,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Sunday",
+        day: 6,
         date: 24,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [
@@ -1023,18 +943,18 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
     },
     {
       dateObj: {
-        day: "Monday",
+        day: 0,
         date: 25,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Tuesday",
+        day: 1,
         date: 26,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [
@@ -1056,18 +976,18 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
     },
     {
       dateObj: {
-        day: "Wednesday",
+        day: 2,
         date: 27,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Thursday",
+        day: 3,
         date: 28,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [
@@ -1089,18 +1009,18 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
     },
     {
       dateObj: {
-        day: "Friday",
+        day: 4,
         date: 29,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [],
     },
     {
       dateObj: {
-        day: "Saturday",
+        day: 5,
         date: 30,
-        month: "March",
+        month: 2,
         year: 2024,
       },
       events: [
@@ -1121,66 +1041,31 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
       ],
     },
     {
-      dateObj: {
-        day: "Sunday",
-        date: 31,
-        month: "March",
-        year: 2024,
-      },
+      dateObj: null,
       events: [],
     },
     {
-      dateObj: {
-        day: "Monday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
+      dateObj: null,
       events: [],
     },
     {
-      dateObj: {
-        day: "Tuesday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
+      dateObj: null,
       events: [],
     },
     {
-      dateObj: {
-        day: "Wednesday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
+      dateObj: null,
       events: [],
     },
     {
-      dateObj: {
-        day: "Thursday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
+      dateObj: null,
       events: [],
     },
     {
-      dateObj: {
-        day: "Friday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
+      dateObj: null,
       events: [],
     },
     {
-      dateObj: {
-        day: "Saturday",
-        date: -1,
-        month: "",
-        year: -1,
-      },
+      dateObj: null,
       events: [],
     },
   ];
@@ -1189,9 +1074,9 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
 const getAvailableTimes = (): CalendarEventType[] => [
   {
     dateObj: {
-      day: "Thursday",
+      day: 3,
       date: 14,
-      month: "March",
+      month: 2,
       year: 2024,
     },
     events: [
@@ -1211,9 +1096,9 @@ const getAvailableTimes = (): CalendarEventType[] => [
   },
   {
     dateObj: {
-      day: "Sunday",
+      day: 6,
       date: 17,
-      month: "March",
+      month: 2,
       year: 2024,
     },
     events: [
@@ -1233,9 +1118,9 @@ const getAvailableTimes = (): CalendarEventType[] => [
   },
   {
     dateObj: {
-      day: "Wednesday",
+      day: 2,
       date: 20,
-      month: "March",
+      month: 2,
       year: 2024,
     },
     events: [

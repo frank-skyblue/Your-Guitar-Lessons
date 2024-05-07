@@ -1,5 +1,10 @@
+/**
+ * Notes: All day, month values are stored as numbers
+ * UI-friendly time formats should be rendered with the help of helper functions.
+ */
+
 type UpcomingLessonsObjType = {
-  day: string;
+  day: number;
   date: string;
   time: string;
   location: string;
@@ -22,11 +27,11 @@ type CalendarEventAdminType = {
 };
 
 type DateType = {
-  day: string;
+  day: number;
   date: number;
-  month: string;
+  month: number;
   year: number;
-};
+} | null;
 
 type EventType = {
   type: "past" | "booked" | "available";

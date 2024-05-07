@@ -91,11 +91,11 @@ const CalendarContentsAdmin: React.FC<CalendarContentsAdminProps> = ({
           .map(({ dateObj, events }: CalendarEventAdminType) => (
             // Date Box
             <div
-              key={dateObj.date > 0 ? dateObj.date : Math.random()}
+              key={dateObj ? dateObj.date : Math.random()}
               className="h-full basis-0 grow text-sm font-normal flex flex-col border-b-2 border-text-primary/15 overflow-y-hidden"
             >
               {/* Date */}
-              <Date date={dateObj.date} />
+              <Date date={dateObj ? dateObj.date : -1} />
               <div className="mt-auto flex flex-col gap-y-0.5 overflow-y-scroll">
                 <Events
                   dateObj={dateObj}

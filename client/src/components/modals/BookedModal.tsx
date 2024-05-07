@@ -17,7 +17,7 @@ const BookedModal: React.FC<BookedModalProps> = ({
   const availableTimes = getAvailableTimes();
   const [selectedTime, setSelectedTime] = React.useState<{
     date: number;
-    month: string;
+    month: number;
     year: number;
     time: string;
   } | null>(null);
@@ -26,7 +26,7 @@ const BookedModal: React.FC<BookedModalProps> = ({
     return (
       <div className="flex flex-col p-3 pb-1 border-b border-solid border-text-primary/50 rounded-t">
         <h3 className="text-xl font-semibold">
-          {dateObj.day} {dateObj.month} {dateObj.date}, {dateObj.year} -{" "}
+          {dateObj!.day} {dateObj!.month} {dateObj!.date}, {dateObj!.year} -{" "}
           {infoObj.time}
         </h3>
         <p>{infoObj.address}</p>
@@ -54,18 +54,18 @@ const BookedModal: React.FC<BookedModalProps> = ({
                 : "bg-available-highlight"
             } flex justify-between border-l-4 border-text-primary/50 px-1 py-1.5 rounded-sm
             ${
-              dateObj.date === selectedTime?.date &&
-              dateObj.month === selectedTime?.month &&
-              dateObj.year === selectedTime?.year &&
+              dateObj!.date === selectedTime?.date &&
+              dateObj!.month === selectedTime?.month &&
+              dateObj!.year === selectedTime?.year &&
               time === selectedTime?.time
                 ? "bg-selected"
                 : ""
             }`}
             onClick={() =>
               setSelectedTime({
-                date: dateObj.date,
-                month: dateObj.month,
-                year: dateObj.year,
+                date: dateObj!.date,
+                month: dateObj!.month,
+                year: dateObj!.year,
                 time,
               })
             }
@@ -84,10 +84,10 @@ const BookedModal: React.FC<BookedModalProps> = ({
           {availableTimes.map(
             ({ dateObj, events }: { dateObj: DateType; events: any }) =>
               events.length > 0 && (
-                <div key={dateObj.date} className="flex flex-col gap-y-1">
+                <div key={dateObj!.date} className="flex flex-col gap-y-1">
                   {/* Date */}
                   <div className="text-sm font-normal text-center border-b-2 border-text-primary/15">
-                    {dateObj.date}
+                    {dateObj!.date}
                   </div>
                   {/* Events */}
                   <div className="flex flex-col gap-y-0.5">

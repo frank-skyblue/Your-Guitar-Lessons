@@ -60,10 +60,10 @@ const CalendarContentsMobile: React.FC<CalendarContentsMobileProps> = ({
       {calendarEvents.map(
         ({ dateObj, events }: { dateObj: DateType; events: any }) =>
           events.length > 0 && (
-            <div key={dateObj.date} className="flex flex-col gap-y-1">
+            <div key={dateObj!.date} className="flex flex-col gap-y-1">
               {/* Date */}
               <div className="text-sm font-normal text-center border-b-2 border-text-primary/15">
-                {dateObj.date}
+                {dateObj!.date}
               </div>
               {/* Events */}
               <div className="flex flex-col gap-y-0.5 overflow-y-scroll">
