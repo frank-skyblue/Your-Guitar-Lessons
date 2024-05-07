@@ -1,6 +1,7 @@
 import React from "react";
 import { DateType, InfoType } from "../../util/types";
 import { TrashIcon } from "@heroicons/react/24/solid";
+import { days, months } from "../../util/constants";
 
 interface BookedModalAdminProps {
   dateObj: DateType;
@@ -18,8 +19,9 @@ const BookedModalAdmin: React.FC<BookedModalAdminProps> = ({
       <div className="flex flex-col p-3 pb-1 border-b border-solid border-text-primary/50 rounded-t">
         <h3 className="text-xl">
           <span className="font-semibold block md:inline">{infoObj.user}</span>{" "}
-          <span className="hidden md:inline">-</span> {dateObj!.day}{" "}
-          {dateObj!.month} {dateObj!.date}, {dateObj!.year} @ {infoObj.time}
+          <span className="hidden md:inline">-</span> {days[dateObj!.day]}{" "}
+          {months[dateObj!.month]} {dateObj!.date}, {dateObj!.year} @{" "}
+          {infoObj.time}
         </h3>
         <p>{infoObj.address}</p>
       </div>
@@ -33,7 +35,9 @@ const BookedModalAdmin: React.FC<BookedModalAdminProps> = ({
         <input
           type="date"
           className="border border-solid bg-content-highlight border-text-primary/50 rounded text-sm w-1/2 p-1"
-          defaultValue={`${dateObj!.year}-${dateObj!.month}-${dateObj!.date}`}
+          defaultValue={`${dateObj!.year}-${dateObj!.month <= 9 ? "0" : ""}${
+            dateObj!.month + 1
+          }-${dateObj!.date <= 9 ? "0" : ""}${dateObj!.date}`}
         />
         <label className="text-sm font-semibold">Change Time</label>
         <div className="flex flex-col md:flex-row gap-x-4 gap-y-2">

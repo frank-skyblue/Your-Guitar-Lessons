@@ -762,7 +762,14 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
         month: 2,
         year: 2024,
       },
-      events: [],
+      events: [{
+        type: "booked",
+        time: "4pm",
+        student: "Diana",
+        address: "17 Morris Dr.",
+        fileObj: null,
+      }
+      ],
     },
     {
       dateObj: {

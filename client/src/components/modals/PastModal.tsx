@@ -1,5 +1,6 @@
 import React from "react";
 import { DateType, InfoType, PastInfoType } from "../../util/types";
+import { days, months } from "../../util/constants";
 
 interface PastModalProps {
   dateObj: DateType;
@@ -18,8 +19,8 @@ const PastModal: React.FC<PastModalProps> = ({
     return (
       <div className="flex flex-col p-3 pb-1 border-b border-solid border-text-primary/50 rounded-t">
         <h3 className="text-xl font-semibold">
-          {dateObj!.day} {dateObj!.month} {dateObj!.date}, {dateObj!.year} -{" "}
-          {infoObj.time}
+          {days[dateObj!.day]} {months[dateObj!.month]} {dateObj!.date},{" "}
+          {dateObj!.year} - {infoObj.time}
         </h3>
         <p>{infoObj.address}</p>
       </div>

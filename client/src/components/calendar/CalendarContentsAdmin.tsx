@@ -1,5 +1,4 @@
-import { getUser } from "../../mock/getMockData";
-import { days } from "../../util/constants";
+import { displayDays } from "../../util/constants";
 import {
   CalendarEventAdminType,
   DateType,
@@ -25,7 +24,7 @@ const CalendarContentsAdmin: React.FC<CalendarContentsAdminProps> = ({
 }) => {
   const Header = () => (
     <div className="basis-10 flex divide-x-2 divide-text-primary/15">
-      {days.map((day) => (
+      {displayDays.map((day) => (
         <div
           key={day}
           className="h-full basis-0 grow text-sm font-medium flex items-center border-b-2 border-text-primary/15"

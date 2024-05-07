@@ -1,10 +1,5 @@
 import { getUser } from "../../mock/getMockData";
-import {
-  CalendarEventType,
-  DateType,
-  EventAdminType,
-  EventType,
-} from "../../util/types";
+import { CalendarEventType, DateType, EventAdminType } from "../../util/types";
 
 interface CalendarContentsAdminMobileProps {
   calendarEvents: CalendarEventType[];

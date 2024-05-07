@@ -4,6 +4,7 @@ import {
   getMockUpcomingLessons,
 } from "../mock/getMockData";
 import { PreviousLessonsObjType, UpcomingLessonsObjType } from "../util/types";
+import { days } from "../util/constants";
 
 const Home: React.FC = () => {
   return (
@@ -32,7 +33,7 @@ const Home: React.FC = () => {
   );
 };
 
-const UpcomingLessonsHeaders = ["Day", "Date", "Time", "Location", ""];
+const UpcomingLessonsHeaders = ["Day", "Date", "Time", "Location"];
 
 const UpcomingLessons: React.FC = () => {
   const [upcomingLessons, setUpcomingLessons] = useState<
@@ -61,11 +62,18 @@ const UpcomingLessons: React.FC = () => {
       <div className="flex flex-col gap-y-2 overflow-auto">
         {upcomingLessons.map((lesson: UpcomingLessonsObjType, index) => (
           <div key={index} className="flex flex-row">
-            {Object.values(lesson).map((value, index) => (
-              <p key={index} className="text-md text-text-primary/60 basis-1/5">
-                {value}
-              </p>
-            ))}
+            <p key={index} className="text-md text-text-primary/60 basis-1/5">
+              {days[lesson.day]}
+            </p>
+            <p key={index} className="text-md text-text-primary/60 basis-1/5">
+              {lesson.date}
+            </p>
+            <p key={index} className="text-md text-text-primary/60 basis-1/5">
+              {lesson.time}
+            </p>
+            <p key={index} className="text-md text-text-primary/60 basis-1/5">
+              {lesson.location}
+            </p>
           </div>
         ))}
       </div>

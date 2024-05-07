@@ -1,7 +1,9 @@
 const url = process.env.NODE_ENV === "production" ?
     process.env.REACT_APP_BACKEND_API_DOMAIN_PROD : process.env.REACT_APP_BACKEND_API_DOMAIN;
 
-const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+const displayDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const months = [
   "January",
@@ -18,4 +20,4 @@ const months = [
   "December",
 ];
 
-export { url, days, months };
+export { url, days, displayDays, months };
