@@ -1,16 +1,20 @@
 import { Navigate } from "react-router-dom";
-
-// TODO: Remove this line after implementing authentication
-const userToken = true;
+import { useAppSelector } from "../../store/hooks";
 
 export default function DynamicRoute(props: {
   authenticationPage: boolean;
   landingPage: boolean;
   element: any;
 }) {
-  if (props.authenticationPage && userToken) {
+  const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
+
+  if (props.authenticationPage && isAuthenticated) {
     return <Navigate to="/" />;
-  } else if (!props.authenticationPage && !props.landingPage && !userToken) {
+  } else if (
+    !props.authenticationPage &&
+    !props.landingPage &&
+    !isAuthenticated
+  ) {
     return <Navigate to="/about" />;
   } else {
     return props.element;

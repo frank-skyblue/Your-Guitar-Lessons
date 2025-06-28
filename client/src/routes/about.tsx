@@ -1,6 +1,7 @@
 import React from "react";
 import { HomeIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../store/hooks";
 
 const About: React.FC = () => {
   return (
@@ -71,11 +72,22 @@ const Content: React.FC = () => {
 
 const Navigation: React.FC = () => {
   const navigate = useNavigate();
+  const { isAuthenticated } = useAppSelector((state) => state.auth);
+
+  const handleHomeClick = () => {
+    if (isAuthenticated) {
+      navigate("/");
+    } else {
+      navigate("/login");
+    }
+  };
+
   return (
     <div className="flex justify-center md:justify-end text-md">
       <button
-        className="flex justify-center items-center px-12 md:px-4 py-2 bg-dashboard rounded-lg"
-        onClick={() => navigate("/")}
+        className={`flex justify-center items-center px-12 md:px-4 py-2 rounded-lg transition-colors bg-dashboard hover:bg-dashboard/80 cursor-pointer`}
+        onClick={handleHomeClick}
+        title={isAuthenticated ? "Go to Home" : "Login required to access Home"}
       >
         <HomeIcon className="h-6 w-6" />
         <span className="ml-2 hidden md:inline-block">Home</span>

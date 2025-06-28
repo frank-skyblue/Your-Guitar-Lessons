@@ -4,6 +4,8 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 import ErrorPage from "./errorPage";
 import DynamicRoute from "./routes/layout/DynamicRoute";
 import RoleRoute from "./routes/layout/RoleRoute";
@@ -107,21 +109,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  /* Test backend connection
-    console.log(url)
-    const [message , setMessage] = React.useState<string>('');
-    useEffect(() => {
-        axios.get(url + '/api/hello')
-            .then((res) => {
-                console.log(res.data)
-                setMessage(res.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
-    */
-  return <RouterProvider router={router} />;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
 }
 
 export default App;

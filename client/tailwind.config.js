@@ -1,38 +1,36 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './src/**/*.{js,jsx,ts,tsx}',
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    colors: {
-      'nav': '#514A80',
-      
-      'side-nav': '#797E89',
-      'side-nav-text-active': '#FFFFFF',
-      'side-nav-text-inactive': '#000000',
+    extend: {
+      colors: {
+        nav: "#514A80",
 
-      'content': '#F9FBFF',
-      'content-highlight': '#FFFFFF',
+        "side-nav": "#797E89",
+        "side-nav-text-active": "#FFFFFF",
+        "side-nav-text-inactive": "#000000",
 
-      'dashboard': '#E6E2FF',
+        content: "#F9FBFF",
+        "content-highlight": "#FFFFFF",
 
-      'mobile-nav-highlight': '#a89bff',
-      'mobile-nav-hover': '#665CA4',
+        dashboard: "#E6E2FF",
 
-      'text-primary': '#000000',
-      'text-clickable': '#2B14CE',
-      'text-caution': '#FCFF76',
-      'text-warning': '#FF5E5E',
-      'text-inactive': '#A0A0A0',
+        "mobile-nav-highlight": "#a89bff",
+        "mobile-nav-hover": "#665CA4",
 
-      'past-highlight': '#DFDDDD',
-      'booked-highlight': '#BEBDFF',
-      'available-highlight': "#B2FDAC",
+        "text-primary": "#000000",
+        "text-clickable": "#2B14CE",
+        "text-caution": "#FCFF76",
+        "text-warning": "#FF5E5E",
+        "text-inactive": "#A0A0A0",
 
-      'selected': '#8DCC7E',
+        "past-highlight": "#DFDDDD",
+        "booked-highlight": "#BEBDFF",
+        "available-highlight": "#B2FDAC",
+
+        selected: "#8DCC7E",
+      },
     },
-    extend: {},
   },
-  plugins: []
-}
-
+  plugins: [],
+};
