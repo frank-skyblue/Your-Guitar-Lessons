@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { loginUser } from "../../store/authThunks";
 
@@ -89,7 +89,7 @@ const Login: React.FC = () => {
           </button>
         </form>
         <div className="mt-4 text-center text-sm text-gray-600">
-          <p>Test credentials: test@example.com / password</p>
+          <Link to="/signup">Don't have an account? Sign up</Link>
         </div>
       </div>
     </div>

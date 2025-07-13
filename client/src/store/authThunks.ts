@@ -47,4 +47,25 @@ export const logoutUser = createAsyncThunk(
             throw error;
         }
     }
+);
+
+export const registerUser = createAsyncThunk(
+    'auth/register',
+    async (credentials: { email: string; password: string; name?: string }, { dispatch }) => {
+        dispatch(loginStart());
+        try {
+            const response = await authenticationService.register(credentials);
+            if (response.success && response.token && response.user) {
+                dispatch(loginSuccess({ token: response.token, user: response.user }));
+                return response;
+            } else {
+                dispatch(loginFailure(response.message || 'Registration failed'));
+                throw new Error(response.message || 'Registration failed');
+            }
+        } catch (error) {
+            const errorMessage = error instanceof Error ? error.message : 'Registration failed';
+            dispatch(loginFailure(errorMessage));
+            throw error;
+        }
+    }
 ); 
