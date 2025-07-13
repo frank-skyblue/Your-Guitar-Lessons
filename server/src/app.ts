@@ -1,6 +1,7 @@
-import express, { Express, Router } from 'express';
+import express, { Express } from 'express';
 import cors from 'cors';
-import { login, logout } from './controllers/authenticationController';
+import { login, logout, register } from './controllers/authenticationController';
+import { connectToDatabase } from './services/mongooseService';
 
 const corsConfig = {
     origin: [
@@ -13,7 +14,7 @@ const corsConfig = {
 }
 
 const app: Express = express()
-const router: Router = express.Router()
+const router = express.Router()
 const port = 8080
 
 app.use(cors(corsConfig))
@@ -26,10 +27,20 @@ router.get('/hello', (req, res) => {
 // Authentication routes
 router.post('/login', login)
 router.post('/logout', logout)
+router.post('/register', register)
 
-// app.use(cors(corsConfig))
 app.use('/api', router)
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
+const start = async () => {
+    try {
+        await connectToDatabase();
+        app.listen(port, () => {
+            console.log(`Server started on port ${port}`);
+        });
+    } catch (error) {
+        console.error(error);
+        process.exit(1);
+    }
+};
+
+start();
