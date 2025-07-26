@@ -6,4 +6,11 @@ function classNames(...classes: any[]) {
     return classes.filter(Boolean).join(' ')
 }
 
-export { classNames };
+// auth token helpers
+const getStoredToken = (): string | null => localStorage.getItem('authToken');
+
+const setStoredToken = (token: string): void => localStorage.setItem('authToken', token);
+
+const removeStoredToken = (): void => localStorage.removeItem('authToken');
+
+export { classNames, getStoredToken, setStoredToken, removeStoredToken };

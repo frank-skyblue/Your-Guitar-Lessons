@@ -34,14 +34,14 @@ type DateType = {
 } | null;
 
 type EventType = {
-  type: "past" | "booked" | "available";
+  type: ModalType;
   time: string;
   address: string | null;
   fileObj: { description: string; file: string } | null;
 };
 
 type EventAdminType = {
-  type: "past" | "booked" | "available";
+  type: ModalType;
   time: string;
   student: string | null;
   address: string | null;
@@ -61,6 +61,18 @@ type PastInfoType = {
 
 type ModalType = "past" | "booked" | "available" | "";
 
+interface Lesson {
+  id: string;
+  teacherId: string;
+  studentIds: string[];
+  date: string; // ISO date string
+  time: string; // e.g. "15:00"
+  location: string;
+  description: string;
+  downloadableUrl?: string;
+  status: ModalType;
+}
+
 export type {
   UpcomingLessonsObjType,
   PreviousLessonsObjType,
@@ -72,4 +84,5 @@ export type {
   EventType,
   EventAdminType,
   ModalType,
+  Lesson,
 };
