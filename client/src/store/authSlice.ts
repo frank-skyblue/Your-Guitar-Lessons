@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { removeStoredToken, setStoredToken } from '../util/helpers';
 
 interface AuthState {
     isAuthenticated: boolean;
@@ -32,7 +33,7 @@ const authSlice = createSlice({
             state.user = action.payload.user;
             state.error = null;
             // Store token in localStorage
-            localStorage.setItem('authToken', action.payload.token);
+            setStoredToken(action.payload.token)
         },
         loginFailure: (state, action: PayloadAction<string>) => {
             state.isAuthenticated = false;
@@ -49,13 +50,13 @@ const authSlice = createSlice({
             state.user = null;
             state.error = null;
             // Remove token from localStorage
-            localStorage.removeItem('authToken');
+            removeStoredToken();
         },
         logoutFailure: (state, action: PayloadAction<string>) => {
             state.isLoading = false;
             state.error = action.payload;
             // Still remove token from localStorage even if API fails
-            localStorage.removeItem('authToken');
+            removeStoredToken();
         },
         clearError: (state) => {
             state.error = null;
