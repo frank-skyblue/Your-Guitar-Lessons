@@ -1,6 +1,11 @@
 import { User } from '../models/User';
 import jwt from 'jsonwebtoken';
 
+const isPasswordSecure = (password: string) => {
+    // At least 8 chars, one uppercase, one lowercase, one number (special chars optional)
+    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/.test(password);
+};
+
 export interface LoginCredentials {
     email: string;
     password: string;
@@ -14,6 +19,7 @@ export interface LoginResponse {
         id: string;
         email: string;
         name?: string;
+        role?: string;
     };
 }
 
@@ -72,13 +78,20 @@ export const authenticationService = {
         }
     },
 
-    register: async (credentials: LoginCredentials & { name?: string }): Promise<LoginResponse> => {
+    register: async (credentials: LoginCredentials & { name?: string, role?: string }): Promise<LoginResponse> => {
         try {
-            const { email, password, name } = credentials;
+            const { email, password, name, role } = credentials;
             if (!email || !password) {
                 return {
                     success: false,
                     message: "Email and password are required"
+                };
+            }
+            // Password security check
+            if (!isPasswordSecure(password)) {
+                return {
+                    success: false,
+                    message: "Password must be at least 8 characters long and include uppercase, lowercase, number, and optionally a special character."
                 };
             }
             // Check if user already exists
@@ -90,11 +103,11 @@ export const authenticationService = {
                 };
             }
             // Create new user
-            const newUser = new User({ email, password, name });
+            const newUser = new User({ email, password, name, role });
             await newUser.save();
             // Generate JWT token
             const token = jwt.sign(
-                { id: newUser._id.toString(), email: newUser.email, name: newUser.name },
+                { id: newUser._id.toString(), email: newUser.email, name: newUser.name, role: newUser.role },
                 process.env.JWT_SECRET || 'your_jwt_secret',
                 { expiresIn: '1d' }
             );
@@ -105,7 +118,8 @@ export const authenticationService = {
                 user: {
                     id: newUser._id.toString(),
                     email: newUser.email,
-                    name: newUser.name
+                    name: newUser.name,
+                    role: newUser.role
                 }
             };
         } catch (error) {

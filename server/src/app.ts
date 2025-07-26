@@ -1,7 +1,8 @@
 import express, { Express } from 'express';
 import cors from 'cors';
-import { login, logout, register } from './controllers/authenticationController';
 import { connectToDatabase } from './services/mongooseService';
+import lessonRoutes from './routes/lessonRoutes';
+import authRoutes from './routes/authRoutes';
 
 const corsConfig = {
     origin: [
@@ -24,12 +25,10 @@ router.get('/hello', (req, res) => {
     res.send('Hello from the backend!')
 })
 
-// Authentication routes
-router.post('/login', login)
-router.post('/logout', logout)
-router.post('/register', register)
-
+// Routes
 app.use('/api', router)
+app.use('/api/auth', authRoutes);
+app.use('/api/lessons', lessonRoutes);
 
 const start = async () => {
     try {

@@ -24,7 +24,7 @@ const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
 export const authenticationService = {
     login: async (credentials: LoginCredentials): Promise<LoginResponse> => {
         try {
-            const response = await fetch(`${API_BASE_URL}/api/login`, {
+            const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export const authenticationService = {
             const token = localStorage.getItem("authToken");
 
             if (token) {
-                const response = await fetch(`${API_BASE_URL}/api/logout`, {
+                const response = await fetch(`${API_BASE_URL}/api/auth/logout`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -87,7 +87,7 @@ export const authenticationService = {
 
     register: async (credentials: LoginCredentials & { name?: string }): Promise<LoginResponse> => {
         try {
-            const response = await fetch(`${API_BASE_URL}/api/register`, {
+            const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

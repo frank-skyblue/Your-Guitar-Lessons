@@ -30,7 +30,7 @@ export const login = async (req: Request, res: Response) => {
 
 export const register = async (req: Request, res: Response) => {
     try {
-        const { email, password, name } = req.body;
+        const { email, password, name, role } = req.body;
 
         if (!email || !password) {
             return res.status(400).json({
@@ -39,7 +39,7 @@ export const register = async (req: Request, res: Response) => {
             });
         }
 
-        const result = await authenticationService.register({ email, password, name });
+        const result = await authenticationService.register({ email, password, name, role });
 
         if (result.success) {
             return res.status(201).json(result);
