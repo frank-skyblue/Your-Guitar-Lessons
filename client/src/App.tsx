@@ -1,11 +1,8 @@
-import React, { useEffect } from "react";
-import {
-  createBrowserRouter,
-  Navigate,
-  RouterProvider,
-} from "react-router-dom";
-import { Provider } from "react-redux";
-import { store } from "./store/store";
+import React, { useEffect, useState } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Provider, useDispatch } from "react-redux";
+import { initializeAuthAsync } from "./store/authThunks";
+import { AppDispatch, store } from "./store/store";
 import ErrorPage from "./errorPage";
 import DynamicRoute from "./routes/layout/DynamicRoute";
 import RoleRoute from "./routes/layout/RoleRoute";
@@ -108,10 +105,35 @@ const router = createBrowserRouter([
   },
 ]);
 
+const AppContent = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const [initStarted, setInitStarted] = useState(false);
+
+  useEffect(() => {
+    const initialize = async () => {
+      setInitStarted(true);
+      await dispatch(initializeAuthAsync());
+    };
+
+    initialize();
+  }, [dispatch]);
+
+  // Show loading until initialization is complete
+  if (!initStarted) {
+    return (
+      <div className="loading-container">
+        <div>Initializing...</div>
+      </div>
+    );
+  }
+
+  return <RouterProvider router={router} />;
+};
+
 function App() {
   return (
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <AppContent />
     </Provider>
   );
 }

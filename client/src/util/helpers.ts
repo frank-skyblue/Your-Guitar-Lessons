@@ -7,10 +7,10 @@ function classNames(...classes: any[]) {
 }
 
 // auth token helpers
-const getStoredToken = (): string | null => localStorage.getItem('authToken');
+const getStoredToken = (): string | null => localStorage.getItem('token');
 
-const setStoredToken = (token: string): void => localStorage.setItem('authToken', token);
+const setStoredToken = (token: string): void => localStorage.setItem('token', token);
 
-const removeStoredToken = (): void => localStorage.removeItem('authToken');
+const removeStoredToken = (): void => localStorage.removeItem('token');
 
 export { classNames, getStoredToken, setStoredToken, removeStoredToken };

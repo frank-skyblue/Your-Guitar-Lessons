@@ -1,3 +1,5 @@
+import { getStoredToken } from "../util/helpers";
+
 export interface LoginCredentials {
     email: string;
     password: string;
@@ -44,7 +46,7 @@ export const authenticationService = {
 
     logout: async (): Promise<LogoutResponse> => {
         try {
-            const token = localStorage.getItem("authToken");
+            const token = getStoredToken();
 
             if (token) {
                 const response = await fetch(`${API_BASE_URL}/api/auth/logout`, {
@@ -69,20 +71,6 @@ export const authenticationService = {
                 message: "Network error occurred"
             };
         }
-    },
-
-    // Helper function to get token from localStorage
-    getToken: (): string | null => {
-        return localStorage.getItem("authToken");
-    },
-
-    // Helper function to check if user is authenticated
-    isAuthenticated: (): boolean => {
-        return !!localStorage.getItem("authToken");
-    },
-
-    storeToken: (token: string) => {
-        localStorage.setItem("authToken", token);
     },
 
     register: async (credentials: LoginCredentials & { name?: string }): Promise<LoginResponse> => {

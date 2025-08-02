@@ -9,7 +9,6 @@ export default function NavBar() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { isAuthenticated, isLoading } = useAppSelector((state) => state.auth);
-  console.log(isAuthenticated);
 
   const navigation = [
     { name: "Home", href: "/" },
