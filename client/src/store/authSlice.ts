@@ -4,12 +4,14 @@ import { removeStoredToken, setStoredToken } from '../util/helpers';
 interface AuthState {
     isAuthenticated: boolean;
     isLoading: boolean;
-    user: {
-        id?: string;
-        email?: string;
-        name?: string;
-    } | null;
+    user: User | null;
     error: string | null;
+}
+
+export interface User {
+    id?: string;
+    email?: string;
+    name?: string;
 }
 
 const initialState: AuthState = {

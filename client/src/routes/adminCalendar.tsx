@@ -8,11 +8,12 @@ import BookedModalAdmin from "../components/modals/BookedModalAdmin";
 import AvailableModalAdmin from "../components/modals/AvailableModalAdmin";
 import {
   DateType,
-  ModalType,
+  LessonsStatusType,
   InfoType,
   PastInfoType,
   CalendarEventAdminType,
-} from "../util/types";
+  LessonsStatus,
+} from "../models/types";
 
 const AdminCalendar: React.FC = () => {
   const calendarEvents: CalendarEventAdminType[] = getMockCalendarEventsAdmin();
@@ -22,7 +23,9 @@ const AdminCalendar: React.FC = () => {
     null
   );
   const [showModal, setShowModal] = React.useState<Boolean>(false);
-  const [modalType, setModalType] = React.useState<ModalType>("");
+  const [modalType, setModalType] = React.useState<LessonsStatusType>(
+    LessonsStatus.EMPTY
+  );
 
   return (
     <>

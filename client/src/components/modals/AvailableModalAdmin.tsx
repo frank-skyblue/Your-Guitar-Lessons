@@ -1,5 +1,5 @@
 import React from "react";
-import { DateType, InfoType } from "../../util/types";
+import { DateType, InfoType } from "../../models/types";
 import { days, months } from "../../util/constants";
 
 interface AvailableModalAdminProps {

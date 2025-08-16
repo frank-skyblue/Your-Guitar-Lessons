@@ -9,10 +9,11 @@ import AvailableModal from "../components/modals/AvailableModal";
 import {
   CalendarEventType,
   DateType,
-  ModalType,
+  LessonsStatusType,
   InfoType,
   PastInfoType,
-} from "../util/types";
+  LessonsStatus,
+} from "../models/types";
 
 const Calendar: React.FC = () => {
   const calendarEvents: CalendarEventType[] = getMockCalendarEvents();
@@ -22,7 +23,9 @@ const Calendar: React.FC = () => {
     null
   );
   const [showModal, setShowModal] = React.useState<Boolean>(false);
-  const [modalType, setModalType] = React.useState<ModalType>("");
+  const [modalType, setModalType] = React.useState<LessonsStatusType>(
+    LessonsStatus.EMPTY
+  );
 
   return (
     <>

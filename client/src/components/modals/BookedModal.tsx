@@ -1,5 +1,5 @@
 import React from "react";
-import { DateType, EventType, InfoType } from "../../util/types";
+import { DateType, EventType, InfoType } from "../../models/types";
 import { getAvailableTimes } from "../../mock/getMockData";
 import { TrashIcon } from "@heroicons/react/24/solid";
 import { days, months } from "../../util/constants";

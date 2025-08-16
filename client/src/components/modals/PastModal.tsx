@@ -1,5 +1,5 @@
 import React from "react";
-import { DateType, InfoType, PastInfoType } from "../../util/types";
+import { DateType, InfoType, PastInfoType } from "../../models/types";
 import { days, months } from "../../util/constants";
 
 interface PastModalProps {

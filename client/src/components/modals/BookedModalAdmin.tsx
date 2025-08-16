@@ -1,5 +1,5 @@
 import React from "react";
-import { DateType, InfoType } from "../../util/types";
+import { DateType, InfoType } from "../../models/types";
 import { TrashIcon } from "@heroicons/react/24/solid";
 import { days, months } from "../../util/constants";
 

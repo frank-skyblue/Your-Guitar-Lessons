@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Lesson } from '../util/types';
+import { Lesson } from '../models/interfaces';
 
 interface LessonState {
     lessons: Lesson[];

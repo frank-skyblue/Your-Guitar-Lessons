@@ -3,7 +3,7 @@ import {
   CalendarEventAdminType,
   DateType,
   EventAdminType,
-} from "../../util/types";
+} from "../../models/types";
 
 interface CalendarContentsAdminProps {
   calendarEvents: CalendarEventAdminType[];

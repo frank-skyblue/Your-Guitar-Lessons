@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from "react";
-import {
-  getMockPreviousLessons,
-  getMockUpcomingLessons,
-} from "../mock/getMockData";
-import { PreviousLessonsObjType, UpcomingLessonsObjType } from "../util/types";
-import { days } from "../util/constants";
+import React from "react";
+import useLessons from "../hooks/useLessons";
+import { Lesson } from "../models/interfaces";
+import { extractDateInfo } from "../util/helpers";
 
 const Home: React.FC = () => {
+  const [pastLessons, bookedLessons] = useLessons();
+
   return (
     <div className="h-full flex flex-col gap-y-3 md:gap-y-0 md:flex-row md:gap-x-6 p-3 md:px-6 md:py-8">
       <div className="basis-3/4 md:basis-3/5 flex flex-col gap-y-3 md:gap-y-6 overflow-hidden">
         <div className="basis-1/3 md:basis-2/6 flex flex-col gap-y-2 overflow-hidden text-center md:text-left">
           <h1 className="text-2xl">Upcoming Lessons</h1>
           <div className="md:bg-content-highlight flex-grow flex flex-col gap-y-2 rounded-md px-2 overflow-hidden">
-            <UpcomingLessons />
+            <UpcomingLessons bookedLessons={bookedLessons} />
           </div>
         </div>
         <div className="basis-2/3 md:basis-4/6 flex flex-col gap-y-2 overflow-hidden text-center md:text-left">
           <h1 className="text-2xl">Previous Lessons</h1>
           <div className="md:bg-content-highlight flex-grow flex flex-col gap-y-2 rounded-md px-2 overflow-hidden">
-            <PreviousLessons />
+            <PreviousLessons pastLessons={pastLessons} />
           </div>
         </div>
       </div>
@@ -35,18 +34,12 @@ const Home: React.FC = () => {
 
 const UpcomingLessonsHeaders = ["Day", "Date", "Time", "Location"];
 
-const UpcomingLessons: React.FC = () => {
-  const [upcomingLessons, setUpcomingLessons] = useState<
-    UpcomingLessonsObjType[]
-  >([]);
+type UpcomingLessonsProps = {
+  bookedLessons: Lesson[];
+};
 
-  useEffect(() => {
-    const mockUpcomingLessons: UpcomingLessonsObjType[] =
-      getMockUpcomingLessons();
-    setUpcomingLessons(mockUpcomingLessons);
-  }, []);
-
-  if (upcomingLessons.length === 0) {
+const UpcomingLessons: React.FC<UpcomingLessonsProps> = ({ bookedLessons }) => {
+  if (bookedLessons.length === 0) {
     return <p>No upcoming lessons</p>;
   }
 
@@ -60,22 +53,26 @@ const UpcomingLessons: React.FC = () => {
         ))}
       </div>
       <div className="flex flex-col gap-y-2 overflow-auto">
-        {upcomingLessons.map((lesson: UpcomingLessonsObjType, index) => (
-          <div key={index} className="flex flex-row">
-            <p key={index} className="text-md text-text-primary/60 basis-1/5">
-              {days[lesson.day]}
-            </p>
-            <p key={index} className="text-md text-text-primary/60 basis-1/5">
-              {lesson.date}
-            </p>
-            <p key={index} className="text-md text-text-primary/60 basis-1/5">
-              {lesson.time}
-            </p>
-            <p key={index} className="text-md text-text-primary/60 basis-1/5">
-              {lesson.location}
-            </p>
-          </div>
-        ))}
+        {bookedLessons.map((lesson: Lesson, index: number) => {
+          const { day, date: dateStr, time } = extractDateInfo(lesson.date);
+
+          return (
+            <div key={index} className="flex flex-row">
+              <p key={index} className="text-md text-text-primary/60 basis-1/5">
+                {day}
+              </p>
+              <p key={index} className="text-md text-text-primary/60 basis-1/5">
+                {dateStr}
+              </p>
+              <p key={index} className="text-md text-text-primary/60 basis-1/5">
+                {time}
+              </p>
+              <p key={index} className="text-md text-text-primary/60 basis-1/5">
+                {lesson.location}
+              </p>
+            </div>
+          );
+        })}
       </div>
     </>
   );
@@ -83,18 +80,12 @@ const UpcomingLessons: React.FC = () => {
 
 const PreviousLessonsHeaders = ["Date", "Description", "Downloadable"];
 
-const PreviousLessons: React.FC = () => {
-  const [previousLessons, setPreviousLessons] = useState<
-    PreviousLessonsObjType[]
-  >([]);
+type PreviousLessonsProps = {
+  pastLessons: Lesson[];
+};
 
-  useEffect(() => {
-    const mockPreviousLessons: PreviousLessonsObjType[] =
-      getMockPreviousLessons();
-    setPreviousLessons(mockPreviousLessons);
-  }, []);
-
-  if (previousLessons.length === 0) {
+const PreviousLessons: React.FC<PreviousLessonsProps> = ({ pastLessons }) => {
+  if (pastLessons.length === 0) {
     return <p>No previous lessons</p>;
   }
 
@@ -111,18 +102,23 @@ const PreviousLessons: React.FC = () => {
         ))}
       </div>
       <div className="flex flex-col gap-y-2 overflow-auto">
-        {previousLessons.map((lesson: PreviousLessonsObjType, index) => (
-          <div key={index} className="flex flex-row">
-            {Object.values(lesson).map((value, index) => (
-              <p
-                key={index}
-                className="text-md text-text-primary/60 first:basis-1/5 basis-2/6"
-              >
-                {value}
+        {pastLessons.map((lesson: Lesson, index) => {
+          const { date: dateStr } = extractDateInfo(lesson.date);
+
+          return (
+            <div key={index} className="flex flex-row">
+              <p key={index} className="text-md text-text-primary/60 basis-1/5">
+                {dateStr}
               </p>
-            ))}
-          </div>
-        ))}
+              <p key={index} className="text-md text-text-primary/60 basis-2/6">
+                {lesson.description}
+              </p>
+              <p key={index} className="text-md text-text-primary/60 basis-2/6">
+                {lesson.downloadableUrl}
+              </p>
+            </div>
+          );
+        })}
       </div>
     </>
   );

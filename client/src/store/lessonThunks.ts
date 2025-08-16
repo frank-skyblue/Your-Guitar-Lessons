@@ -5,6 +5,7 @@ import {
     setLessonsFailure
 } from './lessonSlice';
 import { lessonService } from '../services/lessonService';
+import { getStoredToken } from '../util/helpers';
 
 export const getLessons = createAsyncThunk(
     'lessons/get',
@@ -12,7 +13,8 @@ export const getLessons = createAsyncThunk(
         dispatch(setLessonsStart());
 
         try {
-            const response = await lessonService.getLessonsByStudentId(studentId);
+            const token = getStoredToken() ?? ""
+            const response = await lessonService.getLessonsByStudentId(studentId, token);
 
             if (response.success && response.data) {
                 dispatch(setLessonsSuccess(response.data));

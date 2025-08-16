@@ -1,6 +1,6 @@
 import { getUser } from "../../mock/getMockData";
 import { displayDays } from "../../util/constants";
-import { CalendarEventType, DateType, EventType } from "../../util/types";
+import { CalendarEventType, DateType, EventType } from "../../models/types";
 
 interface CalendarContentsProps {
   calendarEvents: CalendarEventType[];

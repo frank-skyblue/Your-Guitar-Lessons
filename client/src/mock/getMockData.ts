@@ -1,151 +1,10 @@
 import {
   CalendarEventAdminType,
   CalendarEventType,
-  PreviousLessonsObjType,
-  UpcomingLessonsObjType,
-} from "../util/types";
+  LessonsStatus
+} from "../models/types";
 
 const getUser = () => "Leyan";
-
-const getMockUpcomingLessons = (): UpcomingLessonsObjType[] => {
-  return [
-    {
-      day: 0,
-      date: "2021-01-01",
-      time: "12pm",
-      location: "17 Morris Dr",
-    },
-    {
-      day: 1,
-      date: "2021-01-02",
-      time: "12pm",
-      location: "17 Morris Dr",
-    },
-    {
-      day: 2,
-      date: "2021-01-03",
-      time: "12pm",
-      location: "17 Morris Dr",
-    },
-    {
-      day: 3,
-      date: "2021-01-04",
-      time: "12pm",
-      location: "17 Morris Dr",
-    },
-    {
-      day: 4,
-      date: "2021-01-05",
-      time: "12pm",
-      location: "17 Morris Dr",
-    },
-  ];
-};
-
-const getMockPreviousLessons = (): PreviousLessonsObjType[] => {
-  return [
-    {
-      date: "2021-01-01",
-      description: "Lesson 1",
-      downloadable: "link1",
-    },
-    {
-      date: "2021-01-02",
-      description: "Lesson 2",
-      downloadable: "link2",
-    },
-    {
-      date: "2021-01-03",
-      description: "Lesson 3",
-      downloadable: "link3",
-    },
-    {
-      date: "2021-01-04",
-      description: "Lesson 4",
-      downloadable: "link4",
-    },
-    {
-      date: "2021-01-05",
-      description: "Lesson 5",
-      downloadable: "link5",
-    },
-    {
-      date: "2021-01-01",
-      description: "Lesson 1",
-      downloadable: "link1",
-    },
-    {
-      date: "2021-01-02",
-      description: "Lesson 2",
-      downloadable: "link2",
-    },
-    {
-      date: "2021-01-03",
-      description: "Lesson 3",
-      downloadable: "link3",
-    },
-    {
-      date: "2021-01-04",
-      description: "Lesson 4",
-      downloadable: "link4",
-    },
-    {
-      date: "2021-01-05",
-      description: "Lesson 5",
-      downloadable: "link5",
-    },
-    {
-      date: "2021-01-01",
-      description: "Lesson 1",
-      downloadable: "link1",
-    },
-    {
-      date: "2021-01-02",
-      description: "Lesson 2",
-      downloadable: "link2",
-    },
-    {
-      date: "2021-01-03",
-      description: "Lesson 3",
-      downloadable: "link3",
-    },
-    {
-      date: "2021-01-04",
-      description: "Lesson 4",
-      downloadable: "link4",
-    },
-    {
-      date: "2021-01-05",
-      description: "Lesson 5",
-      downloadable: "link5",
-    },
-    {
-      date: "2021-01-01",
-      description: "Lesson 1",
-      downloadable: "link1",
-    },
-    {
-      date: "2021-01-02",
-      description: "Lesson 2",
-      downloadable: "link2",
-    },
-    {
-      date: "2021-01-03",
-      description: "Lesson 3",
-      downloadable: "link3",
-    },
-    {
-      date: "2021-01-04",
-      description: "Lesson 4",
-      downloadable: "link4",
-    },
-    {
-      date: "2021-01-05",
-      description: "Lesson 5",
-      downloadable: "link5",
-    },
-  ];
-};
 
 const getMockCalendarEvents = (): CalendarEventType[] => {
   return [
@@ -205,7 +64,7 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
       },
       events: [
         {
-          type: "past",
+          type: LessonsStatus.PAST,
           time: "8pm",
           address: "17 Morris Dr.",
           fileObj: {
@@ -233,7 +92,7 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
       },
       events: [
         {
-          type: "booked",
+          type: LessonsStatus.BOOKED,
           time: "4pm",
           address: "17 Morris Dr.",
           fileObj: null,
@@ -267,19 +126,19 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
       },
       events: [
         {
-          type: "booked",
+          type: LessonsStatus.BOOKED,
           time: "4pm",
           address: "17 Morris Dr.",
           fileObj: null,
         },
         {
-          type: "booked",
+          type: LessonsStatus.BOOKED,
           time: "6pm",
           address: "17 Morris Dr.",
           fileObj: null,
         },
         {
-          type: "booked",
+          type: LessonsStatus.BOOKED,
           time: "7pm",
           address: "17 Morris Dr.",
           fileObj: null,
@@ -331,13 +190,13 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
       },
       events: [
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "4pm",
           address: null,
           fileObj: null,
         },
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "6pm",
           address: null,
           fileObj: null,
@@ -371,13 +230,13 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
       },
       events: [
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "4pm",
           address: null,
           fileObj: null,
         },
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "6pm",
           address: null,
           fileObj: null,
@@ -411,13 +270,13 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
       },
       events: [
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "4pm",
           address: null,
           fileObj: null,
         },
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "6pm",
           address: null,
           fileObj: null,
@@ -460,13 +319,13 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
       },
       events: [
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "4pm",
           address: null,
           fileObj: null,
         },
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "6pm",
           address: null,
           fileObj: null,
@@ -491,13 +350,13 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
       },
       events: [
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "4pm",
           address: null,
           fileObj: null,
         },
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "6pm",
           address: null,
           fileObj: null,
@@ -522,13 +381,13 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
       },
       events: [
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "4pm",
           address: null,
           fileObj: null,
         },
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "6pm",
           address: null,
           fileObj: null,
@@ -553,13 +412,13 @@ const getMockCalendarEvents = (): CalendarEventType[] => {
       },
       events: [
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "4pm",
           address: null,
           fileObj: null,
         },
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "6pm",
           address: null,
           fileObj: null,
@@ -660,7 +519,7 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
       },
       events: [
         {
-          type: "past",
+          type: LessonsStatus.PAST,
           time: "8pm",
           student: "Leyan",
           address: "17 Morris Dr.",
@@ -689,7 +548,7 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
       },
       events: [
         {
-          type: "booked",
+          type: LessonsStatus.BOOKED,
           time: "4pm",
           student: "Tom",
           address: "17 Morris Dr.",
@@ -724,21 +583,21 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
       },
       events: [
         {
-          type: "booked",
+          type: LessonsStatus.BOOKED,
           time: "4pm",
           student: "Diana",
           address: "17 Morris Dr.",
           fileObj: null,
         },
         {
-          type: "booked",
+          type: LessonsStatus.BOOKED,
           time: "6pm",
           student: "XiaoYang",
           address: "17 Morris Dr.",
           fileObj: null,
         },
         {
-          type: "booked",
+          type: LessonsStatus.BOOKED,
           time: "7pm",
           student: "Leyan",
           address: "17 Morris Dr.",
@@ -763,7 +622,7 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
         year: 2024,
       },
       events: [{
-        type: "booked",
+        type: LessonsStatus.BOOKED,
         time: "4pm",
         student: "Diana",
         address: "17 Morris Dr.",
@@ -798,14 +657,14 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
       },
       events: [
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "4pm",
           student: null,
           address: null,
           fileObj: null,
         },
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "6pm",
           student: null,
           address: null,
@@ -840,14 +699,14 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
       },
       events: [
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "4pm",
           student: null,
           address: null,
           fileObj: null,
         },
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "6pm",
           student: null,
           address: null,
@@ -882,14 +741,14 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
       },
       events: [
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "4pm",
           student: null,
           address: null,
           fileObj: null,
         },
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "6pm",
           student: null,
           address: null,
@@ -933,14 +792,14 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
       },
       events: [
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "4pm",
           student: null,
           address: null,
           fileObj: null,
         },
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "6pm",
           student: null,
           address: null,
@@ -966,14 +825,14 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
       },
       events: [
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "4pm",
           student: null,
           address: null,
           fileObj: null,
         },
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "6pm",
           student: null,
           address: null,
@@ -999,14 +858,14 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
       },
       events: [
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "4pm",
           student: null,
           address: null,
           fileObj: null,
         },
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "6pm",
           student: null,
           address: null,
@@ -1032,14 +891,14 @@ const getMockCalendarEventsAdmin = (): CalendarEventAdminType[] => {
       },
       events: [
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "4pm",
           student: null,
           address: null,
           fileObj: null,
         },
         {
-          type: "available",
+          type: LessonsStatus.AVAILABLE,
           time: "6pm",
           student: null,
           address: null,
@@ -1088,13 +947,13 @@ const getAvailableTimes = (): CalendarEventType[] => [
     },
     events: [
       {
-        type: "available",
+        type: LessonsStatus.AVAILABLE,
         time: "4pm",
         address: null,
         fileObj: null,
       },
       {
-        type: "available",
+        type: LessonsStatus.AVAILABLE,
         time: "6pm",
         address: null,
         fileObj: null,
@@ -1110,13 +969,13 @@ const getAvailableTimes = (): CalendarEventType[] => [
     },
     events: [
       {
-        type: "available",
+        type: LessonsStatus.AVAILABLE,
         time: "4pm",
         address: null,
         fileObj: null,
       },
       {
-        type: "available",
+        type: LessonsStatus.AVAILABLE,
         time: "6pm",
         address: null,
         fileObj: null,
@@ -1132,13 +991,13 @@ const getAvailableTimes = (): CalendarEventType[] => [
     },
     events: [
       {
-        type: "available",
+        type: LessonsStatus.AVAILABLE,
         time: "4pm",
         address: null,
         fileObj: null,
       },
       {
-        type: "available",
+        type: LessonsStatus.AVAILABLE,
         time: "6pm",
         address: null,
         fileObj: null,
@@ -1153,8 +1012,6 @@ const getMockStudents = () => {
 
 export {
   getUser,
-  getMockUpcomingLessons,
-  getMockPreviousLessons,
   getMockCalendarEvents,
   getMockCalendarEventsAdmin,
   getAvailableTimes,
